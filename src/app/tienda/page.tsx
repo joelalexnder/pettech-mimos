@@ -1,0 +1,1 @@
+// -> URL: '/tienda' (Aquí va la pantalla del catálogo)

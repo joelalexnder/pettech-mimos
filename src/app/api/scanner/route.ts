@@ -1,0 +1,1 @@
+// -> BACKEND IA: Recibe la foto, procesa la IA y devuelve la raza.

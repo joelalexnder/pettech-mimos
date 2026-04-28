@@ -1,0 +1,1 @@
+// -> RUTA DINÁMICA: Los corchetes atrapan variables

@@ -1,0 +1,1 @@
+// -> BACKEND TIENDA: Devuelve la lista de ropa y stock.

@@ -1,0 +1,1 @@
+//    ProbadorVirtual.tsx (el canvas para superponer ropa).
