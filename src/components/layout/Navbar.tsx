@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Servicios", href: "/servicios" },
   { label: "Tienda & IA", href: "/tienda" },
   { label: "Nosotros", href: "/conocenos" },
+  { label: "Conoce a tu perro", href: "/conoce-a-tu-perro" },
 ];
 
 export default function Navbar() {

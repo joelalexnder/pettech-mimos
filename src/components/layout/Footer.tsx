@@ -5,12 +5,14 @@ const quickLinks = [
   { label: "Servicios", href: "/servicios" },
   { label: "Tienda & Probador IA", href: "/tienda" },
   { label: "Nosotros", href: "/conocenos" },
+  { label: "Conoce a tu perro", href: "/conoce-a-tu-perro" },
 ];
 
 const services = [
   { label: "Hospedaje", href: "/servicios#hospedaje" },
   { label: "Colegio Canino", href: "/servicios#colegio" },
   { label: "Peluquería & Spa", href: "/servicios#peluqueria" },
+
 ];
 
 export default function Footer() {
