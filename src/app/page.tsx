@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const featuredServices = [
   {
-    icon: "🏠",
+    image: "https://i.pinimg.com/1200x/21/7c/c8/217cc88c6f9d0e91ff841af767b98086.jpg",
     title: "Hospedaje Premium",
     description:
       "Tu peludito duerme cómodo, seguro y feliz. Habitaciones individuales con cámaras en tiempo real.",
@@ -11,7 +17,7 @@ const featuredServices = [
     border: "border-sky-200",
   },
   {
-    icon: "🎓",
+    image: "https://i.pinimg.com/1200x/a4/2b/14/a42b14e8a8207d36d2a935e297f2ea4f.jpg",
     title: "Colegio Canino",
     description:
       "Entrenamiento positivo con expertos. Tu perro aprende modales, obediencia y socialización.",
@@ -20,7 +26,7 @@ const featuredServices = [
     border: "border-violet-200",
   },
   {
-    icon: "✂️",
+    image: "https://i.pinimg.com/736x/0e/98/c0/0e98c0c56bc1533d30a909048b4c2d3d.jpg",
     title: "Peluquería & Spa",
     description:
       "Baño, corte, hidratación y perfume. Deja que tu mascota luzca increíble con nuestros expertos.",
@@ -29,7 +35,7 @@ const featuredServices = [
     border: "border-pink-200",
   },
   {
-    icon: "🤖",
+    image: "https://i.pinimg.com/736x/c7/3d/79/c73d79e7e94636bca579b7cb2fc4b832.jpg",
     title: "Probador IA",
     description:
       "Prueba diferentes estilos y accesorios en tu mascota con nuestra tecnología de inteligencia artificial.",
@@ -102,19 +108,32 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Hero visual */}
+            {/* ─── HERO VISUAL CON CARRUSEL ─── */}
             <div className="relative">
-              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl shadow-sky-100 bg-gradient-to-br from-sky-400 to-sky-600 aspect-square flex items-center justify-center">
-                {/* Placeholder hero image */}
-                <div className="text-center p-12">
-                  <div className="text-9xl mb-4">🐶</div>
-                  <p className="text-white/80 text-lg font-medium">
-                    Tu mascota en buenas manos
-                  </p>
-                  {/* Replace with: <Image src="/hero-dog.jpg" alt="Mascota feliz" fill className="object-cover" /> */}
-                </div>
+              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl shadow-sky-100 aspect-square">
+                <Swiper
+                  modules={[Navigation, Autoplay]}
+                  navigation
+                  autoplay={{ delay: 3000 }}
+                  loop
+                  className="w-full h-full"
+                >
+                  {[
+                    "https://images.unsplash.com/photo-1548199973-03cce0bbc87b",
+                    "https://images.unsplash.com/photo-1558788353-f76d92427f16",
+                    "https://images.unsplash.com/photo-1518717758536-85ae29035b6d",
+                  ].map((img, i) => (
+                    <SwiperSlide key={i}>
+                      <div
+                        className="w-full h-full bg-cover bg-center"
+                        style={{ backgroundImage: `url(${img})` }}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
-              {/* Floating card */}
+
+              {/* Floating cards */}
               <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 border border-slate-100 z-20">
                 <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-2xl">
                   ⭐
@@ -167,15 +186,21 @@ export default function HomePage() {
             {featuredServices.map((service) => (
               <div
                 key={service.title}
-                className={`bg-gradient-to-br ${service.color} border ${service.border} rounded-3xl p-7 hover:-translate-y-2 transition-transform duration-300 group`}
+                className={`bg-gradient-to-br ${service.color} border ${service.border} rounded-3xl overflow-hidden hover:-translate-y-2 transition-transform duration-300 group`}
               >
-                <div className="text-5xl mb-5">{service.icon}</div>
-                <h3 className={`text-xl font-bold ${service.accent} mb-3`}>
-                  {service.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {service.description}
-                </p>
+                {/* Imagen en lugar del ícono */}
+                <div
+                  className="h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${service.image})` }}
+                />
+                <div className="p-7">
+                  <h3 className={`text-xl font-bold ${service.accent} mb-3`}>
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -195,15 +220,27 @@ export default function HomePage() {
       <section className="py-24 bg-gradient-to-br from-slate-50 to-sky-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="bg-gradient-to-br from-sky-400 to-sky-700 rounded-3xl p-12 text-center shadow-xl shadow-sky-200">
-              <div className="text-8xl mb-4">🏆</div>
-              <p className="text-white text-2xl font-black">
-                El pet club favorito de Lima
-              </p>
-              <p className="text-sky-100 mt-2">
-                Reconocidos por cientos de familias peruanas
-              </p>
+
+            {/* Imagen real en lugar del bloque con trofeo */}
+            <div className="relative rounded-3xl overflow-hidden shadow-xl shadow-sky-200 aspect-square">
+              <div
+                className="w-full h-full bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url(https://i.pinimg.com/1200x/62/93/c4/6293c4fe49e40d579614e2c67dcc1a38.jpg)",
+                }}
+              />
+              {/* Overlay con texto encima de la imagen */}
+              <div className="absolute inset-0 bg-gradient-to-t from-sky-900/70 via-sky-800/20 to-transparent flex flex-col justify-end p-8">
+                <p className="text-white text-2xl font-black">
+                  El pet club favorito de Lima
+                </p>
+                <p className="text-sky-100 mt-1 text-sm">
+                  Reconocidos por cientos de familias peruanas
+                </p>
+              </div>
             </div>
+
             <div>
               <span className="inline-block text-sm font-bold text-sky-600 uppercase tracking-widest mb-3">
                 ¿Por qué elegirnos?
@@ -268,6 +305,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
+            
               href="https://wa.me/51999999999?text=Hola!%20Quiero%20agendar%20un%20servicio%20en%20Mimos%20Pet%20Club"
               target="_blank"
               rel="noopener noreferrer"

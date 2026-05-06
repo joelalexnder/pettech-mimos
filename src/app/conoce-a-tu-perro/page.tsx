@@ -3,6 +3,7 @@
 import EscanerMascota from "@/components/features/EscanerMascota";
 import { motion } from "framer-motion";
 
+
 export default function ConoceATuPerroPage() {
     return (
         <div className="min-h-screen bg-slate-50 py-12 px-4 lg:px-8 relative overflow-hidden">
