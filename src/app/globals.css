@@ -15,3 +15,33 @@
     scroll-margin-top: 6rem;
   }
 }
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@media (min-width: 768px) {
+  .md\:cursor-none {
+    cursor: none !important;
+  }
+  a, button, .group {
+    cursor: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Oculta el cursor real en toda la página */
+  .md\:cursor-none, 
+  .md\:cursor-none a, 
+  .md\:cursor-none button,
+  .md\:cursor-none .group {
+    cursor: none !important;
+  }
+}
