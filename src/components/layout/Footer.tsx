@@ -1,145 +1,120 @@
-import Link from "next/link";
+"use client";
 
-const quickLinks = [
-  { label: "Inicio", href: "/" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Tienda & Probador IA", href: "/tienda" },
-  { label: "Nosotros", href: "/conocenos" },
-  { label: "Conoce a tu perro", href: "/conoce-a-tu-perro" },
-];
-
-const services = [
-  { label: "Hospedaje", href: "/servicios#hospedaje" },
-  { label: "Colegio Canino", href: "/servicios#colegio" },
-  { label: "Peluquería & Spa", href: "/servicios#peluqueria" },
-
-];
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center">
-                <span className="text-white text-xl">🐾</span>
+      <footer className="bg-slate-950 text-white pt-16 pb-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-12 pb-12 border-b border-white/10">
+
+            {/* Brand col */}
+            <div className="md:col-span-1">
+              <div className="font-black text-2xl tracking-tighter mb-4">
+                MIMOS <span className="text-orange-500">PET</span> CLUB
               </div>
-              <div>
-                <span className="font-bold text-xl text-white leading-none block">
-                  Mimos
-                </span>
-                <span className="text-xs font-semibold text-orange-400 uppercase tracking-widest leading-none">
-                  Pet Club
-                </span>
+              <p className="text-white/40 text-sm leading-relaxed mb-6">
+                El premier destination para el bienestar animal en Lima, Perú.
+              </p>
+              <div className="flex gap-3">
+                {["IG", "FB", "TK", "YT"].map((s) => (
+                  <motion.a
+                    key={s}
+                    href="#"
+                    whileHover={{ y: -3, color: "#f97316" }}
+                    className="w-9 h-9 rounded-xl bg-white/8 border border-white/10 flex items-center justify-center text-white/60 text-[10px] font-black hover:text-orange-400 hover:border-orange-400/40 transition-colors"
+                  >
+                    {s}
+                  </motion.a>
+                ))}
               </div>
             </div>
-            <p className="text-slate-400 leading-relaxed max-w-xs mb-6">
-              El lugar donde tu mejor amigo recibe el cuidado, amor y estilo que
-              se merece. Hospedaje, educación y grooming de primer nivel.
+
+            {/* Servicios */}
+            <div>
+              <div className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Servicios</div>
+              <ul className="space-y-3">
+                {["Grooming profesional", "Colegio canino", "Hotel para mascotas", "Veterinaria", "Probador IA"].map((s) => (
+                  <li key={s}>
+                    <motion.a
+                      href="#"
+                      whileHover={{ x: 4 }}
+                      className="text-white/50 hover:text-white text-sm transition-colors flex items-center gap-2"
+                    >
+                      <span className="text-orange-500 text-xs">→</span>
+                      {s}
+                    </motion.a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Empresa */}
+            <div>
+              <div className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Empresa</div>
+              <ul className="space-y-3">
+                {["Sobre nosotros", "El equipo", "Nuestra historia", "Blog", "Trabaja con nosotros"].map((s) => (
+                  <li key={s}>
+                    <motion.a
+                      href="#"
+                      whileHover={{ x: 4 }}
+                      className="text-white/50 hover:text-white text-sm transition-colors flex items-center gap-2"
+                    >
+                      <span className="text-orange-500 text-xs">→</span>
+                      {s}
+                    </motion.a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contacto */}
+            <div>
+              <div className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Contacto</div>
+              <ul className="space-y-4 text-sm">
+                <li className="flex gap-3">
+                  <span className="text-orange-500 mt-0.5 shrink-0">📍</span>
+                  <span className="text-white/50">Miraflores, Lima, Perú</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-orange-500 shrink-0">📞</span>
+                  <a href="tel:+51910918802" className="text-white/50 hover:text-white transition-colors">+51 910 918 802</a>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-orange-500 shrink-0">📧</span>
+                  <a href="mailto:hola@mimospetclub.pe" className="text-white/50 hover:text-white transition-colors">hola@mimospetclub.pe</a>
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-orange-500 shrink-0">🕐</span>
+                  <span className="text-white/50">Lun–Sáb 8am–7pm</span>
+                </li>
+              </ul>
+
+              {/* WhatsApp CTA en footer */}
+              <motion.a
+                href="https://wa.me/51910918802"
+                whileHover={{ scale: 1.04 }}
+                className="mt-6 inline-flex items-center gap-2 px-5 py-3 bg-orange-500 text-white font-bold rounded-xl text-sm"
+              >
+                Escribir por WhatsApp →
+              </motion.a>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="pt-8 flex col md:row items-center justify-between gap-4">
+            <p className="text-white/25 text-xs tracking-widest uppercase">
+              © 2026 Mimos Pet Club · Todos los derechos reservados
             </p>
-            {/* Social Icons */}
-            <div className="flex gap-3">
-              {[
-                {
-                  icon: "📘",
-                  label: "Facebook",
-                  href: "https://facebook.com",
-                },
-                {
-                  icon: "📸",
-                  label: "Instagram",
-                  href: "https://instagram.com",
-                },
-                {
-                  icon: "🎵",
-                  label: "TikTok",
-                  href: "https://tiktok.com",
-                },
-                {
-                  icon: "💬",
-                  label: "WhatsApp",
-                  href: "https://wa.me/51999999999",
-                },
-              ].map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-sky-600 flex items-center justify-center transition-colors duration-200 text-lg"
-                >
-                  {social.icon}
+            <div className="flex gap-6">
+              {["Privacidad", "Términos", "Cookies"].map((l) => (
+                <a key={l} href="#" className="text-white/25 hover:text-white/60 text-xs transition-colors uppercase tracking-wider">
+                  {l}
                 </a>
               ))}
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
-              Navegación
-            </h3>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-400 hover:text-sky-400 transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">
-              Servicios
-            </h3>
-            <ul className="space-y-3">
-              {services.map((s) => (
-                <li key={s.href}>
-                  <Link
-                    href={s.href}
-                    className="text-slate-400 hover:text-sky-400 transition-colors text-sm"
-                  >
-                    {s.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 p-4 bg-slate-800 rounded-xl">
-              <p className="text-xs text-slate-400 mb-2">¿Tienes dudas?</p>
-              <a
-                href="https://wa.me/51999999999?text=Hola!%20Quisiera%20información"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-semibold text-green-400 hover:text-green-300 transition-colors flex items-center gap-1"
-              >
-                <span>💬</span> Escríbenos al WhatsApp
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} Mimos Pet Club. Todos los derechos
-            reservados.
-          </p>
-          <p className="text-slate-600 text-xs">
-            Hecho con 🧡 para los mejores amigos
-          </p>
-        </div>
-      </div>
-    </footer>
+      </footer>
   );
 }

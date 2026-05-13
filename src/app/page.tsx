@@ -115,7 +115,7 @@ function ScrollBar() {
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   return (
     <motion.div className="fixed top-0 left-0 right-0 h-[3px] origin-left z-[200]"
-      style={{ scaleX, background: "linear-gradient(90deg,#f97316,#fb923c,#fbbf24)" }} />
+      style={{ scaleX, background: "linear-linear(90deg,#f97316,#fb923c,#fbbf24)" }} />
   );
 }
 
@@ -326,10 +326,10 @@ export default function HomePage() {
       <WalkingPaws />
       <ScrollBar />
 
-      {/* ══════════════════════════════════════
+     {/* ══════════════════════════════════════
           HERO — Pantalla completa + parallax
          ══════════════════════════════════════ */}
-      <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden">
+      <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden flex items-center">
         {/* Fondo slider con parallax */}
         <motion.div className="absolute inset-0 scale-110" style={{ y: heroY }}>
           <Swiper
@@ -346,74 +346,76 @@ export default function HomePage() {
               </SwiperSlide>
             ))}
           </Swiper>
-          {/* Gradientes */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0f] via-transparent to-black/30" />
+          {/* Degradados para oscurecer el fondo y resaltar el texto blanco */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-900/30" />
         </motion.div>
 
-        {/* Contenido */}
+        {/* Contenido Principal (Texto) */}
         <motion.div
-          className="relative z-10 h-full flex items-center"
+          className="relative z-10 w-full pt-24 pb-10" // Añadimos pt-24 para que nunca choque con el Navbar
           style={{ opacity: heroOpacity }}
         >
-          <div className="max-w-7xl mx-auto px-6 w-full">
+          <div className="max-w-[1440px] mx-auto px-6 sm:px-12 w-full">
             <div className="max-w-3xl">
-              {/* Chip */}
+              
+              {/* Chip / Tag */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-400/30 text-orange-300 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-8"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-orange-400 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-8 shadow-lg"
               >
                 <span className="w-1.5 h-1.5 bg-orange-400 rounded-full animate-pulse" />
-                Lima, Perú · Atención 7 días
+                Tacna, Perú · Atención 7 días
               </motion.div>
 
               {/* Título */}
               <Reveal delay={0.3}>
-                <h1 className="text-[clamp(3rem,9vw,7.5rem)] font-black text-white leading-[0.92] tracking-tighter">
+                <h1 className="text-[clamp(3rem,8vw,6.5rem)] font-black text-white leading-[0.95] tracking-tighter drop-shadow-lg">
                   El cuidado que
                 </h1>
               </Reveal>
               <Reveal delay={0.42}>
-                <h1 className="text-[clamp(3rem,9vw,7.5rem)] font-black leading-[0.92] tracking-tighter"
-                  style={{ WebkitTextStroke: "2px rgba(255,255,255,0.5)", color: "transparent" }}>
+                <h1 className="text-[clamp(3rem,8vw,6.5rem)] font-black leading-[0.95] tracking-tighter"
+                  style={{ WebkitTextStroke: "2px rgba(255,255,255,0.7)", color: "transparent" }}>
                   tu mejor amigo
                 </h1>
               </Reveal>
               <Reveal delay={0.54}>
-                <h1 className="text-[clamp(3rem,9vw,7.5rem)] font-black text-orange-400 leading-[0.92] tracking-tighter mb-8">
+                <h1 className="text-[clamp(3rem,8vw,6.5rem)] font-black text-orange-400 leading-[0.95] tracking-tighter mb-8 drop-shadow-lg">
                   merece.
                 </h1>
               </Reveal>
 
               <motion.p
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }}
-                className="text-white/60 text-lg font-light leading-relaxed max-w-xl mb-10"
+                className="text-white/80 text-lg sm:text-xl font-light leading-relaxed max-w-xl mb-10 drop-shadow-md"
               >
                 Hospedaje, educación, grooming y tecnología IA para que tu
                 mascota viva la experiencia premium que siempre soñaste.
               </motion.p>
 
-              {/* CTAs */}
+              {/* Botones (CTAs) - Se quitaron los eventos del cursor viejo */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}
                 className="flex flex-wrap gap-4 mb-14"
               >
                 <motion.a
                   href="https://wa.me/51910918802"
-                  onMouseEnter={on} onMouseLeave={off}
                   whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }}
-                  className="px-9 py-4 bg-orange-500 text-white font-black rounded-full text-sm uppercase tracking-wider shadow-2xl shadow-orange-500/30"
+                  className="px-9 py-4 bg-gradient-to-r from-orange-400 to-orange-600 text-white font-black rounded-full text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] transition-all"
                 >
                   📅 Agendar ahora
                 </motion.a>
-                <motion.div onMouseEnter={on} onMouseLeave={off}
-                  whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }}>
-                  <Link href="/servicios"
-                    className="px-9 py-4 border border-white/30 text-white font-medium rounded-full text-sm backdrop-blur-sm flex items-center gap-2"
+                
+                <Link href="/servicios" className="inline-block">
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -3, backgroundColor: "rgba(255,255,255,0.15)" }} 
+                    whileTap={{ scale: 0.97 }}
+                    className="px-9 py-4 border border-white/30 text-white font-medium rounded-full text-sm backdrop-blur-md flex items-center gap-2 transition-colors cursor-pointer"
                   >
                     Ver servicios →
-                  </Link>
-                </motion.div>
+                  </motion.div>
+                </Link>
               </motion.div>
 
               {/* Trust badges */}
@@ -422,35 +424,46 @@ export default function HomePage() {
                 className="flex flex-wrap gap-6"
               >
                 {["✅ Sin cargo extra nocturno", "📹 Cámaras en vivo", "💊 Atención veterinaria"].map(b => (
-                  <span key={b} className="text-white/40 text-sm font-medium">{b}</span>
+                  <span key={b} className="text-white/60 text-sm font-medium drop-shadow-md">{b}</span>
                 ))}
               </motion.div>
             </div>
           </div>
         </motion.div>
 
-        {/* Floating cards */}
+        {/* Tarjetas Flotantes (Glassmorphism Transparente + Letras Blancas) */}
         <motion.div
           initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.2 }}
-          className="absolute bottom-16 right-8 md:right-16 z-20 flex flex-col gap-4"
+          className="hidden md:flex absolute bottom-16 right-8 lg:right-16 z-20 flex-col gap-4"
         >
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl px-5 py-4 flex items-center gap-3 border border-white/60">
-            <div className="w-11 h-11 bg-amber-100 rounded-xl flex items-center justify-center text-xl">⭐</div>
+          {/* Calificación */}
+          <motion.div 
+            whileHover={{ x: -10, backgroundColor: "rgba(255,255,255,0.15)" }}
+            className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-6 py-4 flex items-center gap-4 cursor-pointer transition-colors"
+          >
+            <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-2xl border border-white/10">⭐</div>
             <div>
-              <p className="text-xs text-slate-400 font-medium">Calificación</p>
-              <p className="font-black text-slate-900 text-lg leading-none">4.9 / 5.0</p>
+              <p className="text-xs text-white/60 font-bold uppercase tracking-widest">Calificación</p>
+              <p className="font-black text-white text-xl leading-none mt-1">4.9 / 5.0</p>
             </div>
-          </div>
-          <div className="bg-orange-500 rounded-2xl shadow-2xl px-5 py-4">
-            <p className="text-xs text-orange-100 font-medium">Mascotas felices</p>
-            <p className="text-3xl font-black text-white">500+</p>
-          </div>
+          </motion.div>
+
+          {/* Mascotas Felices */}
+          <motion.div 
+            whileHover={{ x: -10, backgroundColor: "rgba(255,255,255,0.15)" }}
+            className="bg-black/20 backdrop-blur-xl rounded-2xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] px-6 py-4 cursor-pointer transition-colors"
+          >
+            <p className="text-xs text-orange-400 font-bold uppercase tracking-widest flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-orange-400"></span> Mascotas felices
+            </p>
+            <p className="text-3xl font-black text-white mt-1">500+</p>
+          </motion.div>
         </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
           animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/30"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/50"
         >
           <svg width="22" height="34" viewBox="0 0 22 34" fill="none">
             <rect x="10" y="0" width="2" height="26" rx="1" fill="currentColor" />
@@ -460,23 +473,29 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════
-          MÉTRICAS
+          MÉTRICAS (Adaptado para fondo blanco)
          ══════════════════════════════════════ */}
-      <section className="bg-[#0d0d0f]">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10 border-y border-white/10">
-          {metrics.map((m, i) => (
-            <FadeUp key={i} delay={i * 0.08}
-              className="px-8 py-14 text-center hover:bg-white/3 transition-colors duration-300 group"
-            >
-              <div className="text-5xl md:text-6xl font-black text-white mb-2 tabular-nums group-hover:text-orange-400 transition-colors duration-300">
-                <Counter value={m.value} suffix={m.suffix} />
-              </div>
-              <div className="text-white/35 text-xs uppercase tracking-[0.18em]">{m.label}</div>
-            </FadeUp>
-          ))}
+      <section className="relative z-30 mt-8 sm:mt-12">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          {/* Fondo blanco, sombra amplia y elegante, bordes sutiles grises */}
+          <div className="bg-white border border-slate-100 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-100 overflow-hidden">
+            {metrics.map((m, i) => (
+              <FadeUp key={i} delay={i * 0.08}
+                className="px-4 py-10 lg:py-12 text-center hover:bg-slate-50/80 transition-colors duration-300 group cursor-default flex flex-col justify-center"
+              >
+                {/* Números en gris muy oscuro, cambian a naranja corporativo en hover */}
+                <div className="text-4xl lg:text-5xl font-black text-slate-900 mb-3 tabular-nums group-hover:text-orange-500 transition-colors duration-300">
+                  <Counter value={m.value} suffix={m.suffix} />
+                </div>
+                {/* Textos descriptivos en gris medio, se oscurecen un poco en hover */}
+                <div className="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] group-hover:text-slate-600 transition-colors">
+                  {m.label}
+                </div>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
-
       {/* ══════════════════════════════════════
           SERVICIOS
          ══════════════════════════════════════ */}
@@ -538,7 +557,7 @@ export default function HomePage() {
                     </div>
                     {/* Overlay hover */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-                      style={{ background: `linear-gradient(to top, ${s.accent}cc, transparent)` }} />
+                      style={{ background: `linear-linear(to top, ${s.accent}cc, transparent)` }} />
                   </div>
 
                   {/* Texto */}
@@ -617,12 +636,12 @@ export default function HomePage() {
             <div className="relative rounded-3xl overflow-hidden h-72 md:h-96">
               <div className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: "url(https://i.pinimg.com/1200x/62/93/c4/6293c4fe49e40d579614e2c67dcc1a38.jpg)" }} />
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
               <div className="absolute inset-0 flex items-center px-12 md:px-20">
                 <div className="max-w-lg">
                   <Reveal>
                     <p className="text-white text-3xl md:text-4xl font-black tracking-tight leading-tight">
-                      El pet club favorito de Lima
+                      El pet club favorito de Tacna
                     </p>
                   </Reveal>
                   <FadeUp delay={0.2}>
@@ -668,7 +687,7 @@ export default function HomePage() {
             {/* Línea conectora desktop */}
             <div className="hidden lg:block absolute top-[52px] left-[10%] right-[10%] h-px bg-slate-200" />
             <motion.div
-              className="hidden lg:block absolute top-[52px] left-[10%] h-px bg-gradient-to-r from-orange-500 to-pink-400 origin-left"
+              className="hidden lg:block absolute top-[52px] left-[10%] h-px bg-linear-to-r from-orange-500 to-pink-400 origin-left"
               style={{ right: "10%" }}
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -868,93 +887,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════
-          FOOTER
-         ══════════════════════════════════════ */}
-      <footer className="bg-slate-950 text-white pt-16 pb-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12 pb-12 border-b border-white/10">
-
-            {/* Brand */}
-            <div className="md:col-span-1">
-              <div className="font-black text-2xl tracking-tighter mb-4">
-                MIMOS <span className="text-orange-500">PET</span> CLUB
-              </div>
-              <p className="text-white/40 text-sm leading-relaxed mb-6">
-                El premier destination para el bienestar animal en Lima, Perú.
-              </p>
-              <div className="flex gap-3">
-                {["IG", "FB", "TK", "YT"].map((s) => (
-                  <motion.a key={s} href="#" onMouseEnter={on} onMouseLeave={off}
-                    whileHover={{ y: -3 }}
-                    className="w-9 h-9 rounded-xl bg-white/8 border border-white/10 flex items-center justify-center text-white/50 text-[10px] font-black hover:text-orange-400 hover:border-orange-400/40 transition-colors"
-                  >{s}</motion.a>
-                ))}
-              </div>
-            </div>
-
-            {/* Servicios */}
-            <div>
-              <div className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Servicios</div>
-              <ul className="space-y-3">
-                {["Grooming & Spa", "Colegio Canino", "Hospedaje Premium", "Probador IA", "Veterinaria"].map(s => (
-                  <li key={s}>
-                    <motion.a href="#" onMouseEnter={on} onMouseLeave={off} whileHover={{ x: 4 }}
-                      className="text-white/50 hover:text-white text-sm transition-colors flex items-center gap-2"
-                    >
-                      <span className="text-orange-500 text-xs">→</span>{s}
-                    </motion.a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Empresa */}
-            <div>
-              <div className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Empresa</div>
-              <ul className="space-y-3">
-                {["Sobre nosotros", "El equipo", "Nuestra historia", "Blog", "Trabaja con nosotros"].map(s => (
-                  <li key={s}>
-                    <motion.a href="#" onMouseEnter={on} onMouseLeave={off} whileHover={{ x: 4 }}
-                      className="text-white/50 hover:text-white text-sm transition-colors flex items-center gap-2"
-                    >
-                      <span className="text-orange-500 text-xs">→</span>{s}
-                    </motion.a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contacto */}
-            <div>
-              <div className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Contacto</div>
-              <ul className="space-y-4 text-sm">
-                <li className="flex gap-3"><span className="text-orange-500 flex-shrink-0">📍</span><span className="text-white/50">Miraflores, Lima, Perú</span></li>
-                <li className="flex gap-3"><span className="text-orange-500 flex-shrink-0">📞</span><a href="tel:+51910918802" className="text-white/50 hover:text-white transition-colors">+51 910 918 802</a></li>
-                <li className="flex gap-3"><span className="text-orange-500 flex-shrink-0">📧</span><a href="mailto:hola@mimospetclub.pe" className="text-white/50 hover:text-white transition-colors">hola@mimospetclub.pe</a></li>
-                <li className="flex gap-3"><span className="text-orange-500 flex-shrink-0">🕐</span><span className="text-white/50">Lun–Sáb 8am–7pm</span></li>
-              </ul>
-              <motion.a href="https://wa.me/51910918802" onMouseEnter={on} onMouseLeave={off}
-                whileHover={{ scale: 1.04 }}
-                className="mt-6 inline-flex items-center gap-2 px-5 py-3 bg-orange-500 text-white font-bold rounded-xl text-sm"
-              >
-                WhatsApp →
-              </motion.a>
-            </div>
-          </div>
-
-          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/25 text-xs tracking-widest uppercase">
-              © 2026 Mimos Pet Club · Todos los derechos reservados
-            </p>
-            <div className="flex gap-6">
-              {["Privacidad", "Términos", "Cookies"].map(l => (
-                <a key={l} href="#" className="text-white/25 hover:text-white/60 text-xs transition-colors uppercase tracking-wider">{l}</a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </main>
   );
 }
