@@ -37,7 +37,7 @@ function PawCursor({ hovering }: { hovering: boolean }) {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-[999] hidden md:block"
+      className="fixed top-0 left-0 pointer-events-none z-999 hidden md:block"
       style={{ x: sx, y: sy, translateX: "-50%", translateY: "-50%" }}
     >
       <motion.svg
@@ -114,7 +114,7 @@ function ScrollBar() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   return (
-    <motion.div className="fixed top-0 left-0 right-0 h-[3px] origin-left z-[200]"
+    <motion.div className="fixed top-0 left-0 right-0 h-0.75 origin-left z-200"
       style={{ scaleX, background: "linear-linear(90deg,#f97316,#fb923c,#fbbf24)" }} />
   );
 }
@@ -347,8 +347,8 @@ export default function HomePage() {
             ))}
           </Swiper>
           {/* Degradados para oscurecer el fondo y resaltar el texto blanco */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-900/30" />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-900/50 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-slate-900/30" />
         </motion.div>
 
         {/* Contenido Principal (Texto) */}
@@ -356,7 +356,7 @@ export default function HomePage() {
           className="relative z-10 w-full pt-24 pb-10" // Añadimos pt-24 para que nunca choque con el Navbar
           style={{ opacity: heroOpacity }}
         >
-          <div className="max-w-[1440px] mx-auto px-6 sm:px-12 w-full">
+          <div className="max-w-360 mx-auto px-6 sm:px-12 w-full">
             <div className="max-w-3xl">
               
               {/* Chip / Tag */}
@@ -402,7 +402,7 @@ export default function HomePage() {
                 <motion.a
                   href="https://wa.me/51910918802"
                   whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.97 }}
-                  className="px-9 py-4 bg-gradient-to-r from-orange-400 to-orange-600 text-white font-black rounded-full text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] transition-all"
+                  className="px-9 py-4 bg-linear-to-r from-orange-400 to-orange-600 text-white font-black rounded-full text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] transition-all"
                 >
                   📅 Agendar ahora
                 </motion.a>
@@ -476,7 +476,7 @@ export default function HomePage() {
           MÉTRICAS (Adaptado para fondo blanco)
          ══════════════════════════════════════ */}
       <section className="relative z-30 mt-8 sm:mt-12">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="max-w-360 mx-auto px-4 sm:px-6 lg:px-12">
           {/* Fondo blanco, sombra amplia y elegante, bordes sutiles grises */}
           <div className="bg-white border border-slate-100 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-100 overflow-hidden">
             {metrics.map((m, i) => (
