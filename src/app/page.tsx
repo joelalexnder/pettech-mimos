@@ -8,6 +8,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
+
 // ─────────────────────────────────────────────
 // TIPOS
 // ─────────────────────────────────────────────
@@ -20,40 +21,6 @@ interface PawPrint {
   opacity: number;
 }
 
-// ─────────────────────────────────────────────
-// CURSOR PATITA
-// ─────────────────────────────────────────────
-function PawCursor({ hovering }: { hovering: boolean }) {
-  const mx = useMotionValue(-200);
-  const my = useMotionValue(-200);
-  const sx = useSpring(mx, { stiffness: 350, damping: 30 });
-  const sy = useSpring(my, { stiffness: 350, damping: 30 });
-
-  useEffect(() => {
-    const fn = (e: MouseEvent) => { mx.set(e.clientX); my.set(e.clientY); };
-    window.addEventListener("mousemove", fn);
-    return () => window.removeEventListener("mousemove", fn);
-  }, [mx, my]);
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-999 hidden md:block"
-      style={{ x: sx, y: sy, translateX: "-50%", translateY: "-50%" }}
-    >
-      <motion.svg
-        viewBox="0 0 44 44" width="44" height="44" fill="none"
-        animate={{ scale: hovering ? 1.7 : 1, rotate: hovering ? 20 : 0 }}
-        transition={{ type: "spring", stiffness: 500, damping: 22 }}
-      >
-        <ellipse cx="22" cy="30" rx="8"   ry="9"   fill="#0f172a" />
-        <ellipse cx="9"  cy="19" rx="4.5" ry="5.5" fill="#0f172a" />
-        <ellipse cx="17" cy="12" rx="5"   ry="6"   fill="#0f172a" />
-        <ellipse cx="27" cy="12" rx="5"   ry="6"   fill="#0f172a" />
-        <ellipse cx="35" cy="19" rx="4.5" ry="5.5" fill="#0f172a" />
-      </motion.svg>
-    </motion.div>
-  );
-}
 
 // ─────────────────────────────────────────────
 // PATITAS CAMINANDO (fila inferior)
@@ -322,7 +289,6 @@ export default function HomePage() {
 
   return (
     <main className="overflow-hidden bg-[#fdfbf7] md:cursor-none">
-      <PawCursor hovering={hovering} />
       <WalkingPaws />
       <ScrollBar />
 

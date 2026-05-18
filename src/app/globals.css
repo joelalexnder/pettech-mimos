@@ -37,11 +37,12 @@
 }
 
 @media (min-width: 768px) {
-  /* Oculta el cursor real en toda la página */
-  .md\:cursor-none, 
-  .md\:cursor-none a, 
-  .md\:cursor-none button,
-  .md\:cursor-none .group {
+  /* Oculta el cursor real de Windows en todo el sitio para lucir la patita */
+  body, 
+  a, 
+  button, 
+  .cursor-pointer,
+  .group {
     cursor: none !important;
   }
 }
