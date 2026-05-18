@@ -11,6 +11,18 @@ import {
 } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
+//Iconos
+import {
+  Heart,
+  ShieldCheck,
+  Sparkles,
+  Gem,
+  House,
+  GraduationCap,
+  Camera,
+  Bot
+} from "lucide-react";
+
 // ─── TIPOS ──────────────────────────────────────────────────────────────────
 interface PawPrint {
   id: number;
@@ -254,7 +266,7 @@ const milestones = [
     year: "2022",
     label: "Fundación del Club",
     desc: "Abrimos nuestras puertas con el sueño de crear el mejor espacio para mascotas en Tacna, comenzando con solo 3 servicios y un equipo de 4 personas.",
-    icon: "🏠",
+    icon: House,
     color: "from-sky-500 to-cyan-400",
     border: "border-sky-200",
     bg: "bg-sky-50",
@@ -265,7 +277,7 @@ const milestones = [
     year: "2023",
     label: "Colegio Canino",
     desc: "Incorporamos entrenadores certificados y lanzamos nuestro programa de educación positiva, revolucionando el bienestar conductual en Tacna.",
-    icon: "🎓",
+    icon: GraduationCap,
     color: "from-violet-500 to-purple-400",
     border: "border-violet-200",
     bg: "bg-violet-50",
@@ -276,7 +288,7 @@ const milestones = [
     year: "2024",
     label: "Cámaras 24/7",
     desc: "Instalamos sistema de monitoreo en tiempo real para que los dueños vean a sus mascotas en cualquier momento desde su teléfono.",
-    icon: "📷",
+    icon: Camera,
     color: "from-orange-500 to-amber-400",
     border: "border-orange-200",
     bg: "bg-orange-50",
@@ -287,7 +299,7 @@ const milestones = [
     year: "2025",
     label: "Probador IA",
     desc: "Integramos inteligencia artificial para visualizar estilos de grooming en tu mascota antes del servicio. Primera en Perú.",
-    icon: "🤖",
+    icon: Bot,
     color: "from-pink-500 to-rose-400",
     border: "border-pink-200",
     bg: "bg-pink-50",
@@ -300,7 +312,7 @@ const valores = [
   {
     label: "Amor",
     desc: "Cada animal que cruza nuestra puerta recibe cariño genuino, sin excepción.",
-    icon: "♥",
+    icon: Heart,
     color: "bg-rose-500",
     light: "bg-rose-50",
     border: "border-rose-100",
@@ -309,7 +321,7 @@ const valores = [
   {
     label: "Responsabilidad",
     desc: "Compromiso total con la salud, seguridad y bienestar de tu compañero.",
-    icon: "◉",
+    icon: ShieldCheck,
     color: "bg-sky-500",
     light: "bg-sky-50",
     border: "border-sky-100",
@@ -318,7 +330,7 @@ const valores = [
   {
     label: "Bienestar",
     desc: "Productos naturales y técnicas no invasivas que cuidan desde adentro.",
-    icon: "◈",
+    icon: Sparkles,
     color: "bg-emerald-500",
     light: "bg-emerald-50",
     border: "border-emerald-100",
@@ -327,7 +339,7 @@ const valores = [
   {
     label: "Confianza",
     desc: "Transparencia absoluta con los dueños en cada paso del servicio.",
-    icon: "◆",
+    icon: Gem,
     color: "bg-violet-500",
     light: "bg-violet-50",
     border: "border-violet-100",
@@ -336,10 +348,10 @@ const valores = [
 ];
 
 const metrics = [
-  { value: 2000, suffix: "+", label: "Mascotas atendidas" },
+  { value: 500, suffix: "+", label: "Mascotas atendidas" },
   { value: 98,   suffix: "%", label: "Clientes satisfechos" },
-  { value: 5,    suffix: "",  label: "Años de experiencia" },
-  { value: 12,   suffix: "",  label: "Especialistas" },
+  { value: 3,    suffix: "",  label: "Años de experiencia" },
+  { value: 27/3,   suffix: "",  label: "Especialistas" },
 ];
 
 // ─── PÁGINA PRINCIPAL ─────────────────────────────────────────────────────────
@@ -513,10 +525,10 @@ export default function ConocenosPage() {
               className="relative w-full h-[580px] rounded-[3rem] overflow-hidden shadow-2xl group"
             >
               <img
-                src="https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&w=900&q=80"
-                className="w-full h-full object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 scale-[1.03] group-hover:scale-100"
-                loading="lazy"
-                alt="Instalaciones Mimos Pet Club"
+              src="/mimos.webp"
+              className="w-full h-full object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 scale-[1.03] group-hover:scale-100"
+              loading="lazy"
+              alt="Instalaciones Mimos Pet Club"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
@@ -630,8 +642,8 @@ export default function ConocenosPage() {
                 onMouseLeave={hoverOff}
                 className={`${v.light} ${v.border} border rounded-3xl p-7 group cursor-default`}
               >
-                <div className={`w-10 h-10 ${v.color} rounded-2xl flex items-center justify-center text-white text-lg font-black mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                  {v.icon}
+                <div className={`w-10 h-10 ${v.color} rounded-2xl flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform duration-300`}>
+                  <v.icon size={20} strokeWidth={2.5} />
                 </div>
                 <h4 className={`font-black text-slate-900 text-lg mb-2`}>{v.label}</h4>
                 <p className="text-slate-500 text-sm leading-relaxed">{v.desc}</p>
@@ -649,71 +661,170 @@ export default function ConocenosPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════
-          HISTORIA — Timeline horizontal en oscuro
-         ══════════════════════════════════════════════ */}
-      <section className="py-32 bg-slate-950 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="overflow-hidden mb-16 text-center">
-            <RevealText
-              text="Nuestra historia"
-              className="text-[clamp(2.5rem,7vw,5rem)] font-black text-white tracking-tighter block"
-            />
-          </div>
+{/* ══════════════════════════════════════════════
+    HISTORIA — Timeline horizontal en oscuro
+══════════════════════════════════════════════ */}
+<section className="py-32 bg-slate-950 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="overflow-hidden mb-24 text-center">
+      <RevealText
+        text="Nuestra historia"
+        className="text-[clamp(2.5rem,7vw,5rem)] font-black text-white tracking-tighter block"
+      />
+    </div>
 
-          {/* Timeline items */}
-          <div className="grid md:grid-cols-4 gap-6 relative">
-            {/* Línea conectora */}
-            <div className="hidden md:block absolute top-[52px] left-[12.5%] right-[12.5%] h-px bg-white/10" />
-            <motion.div
-              className="hidden md:block absolute top-[52px] left-[12.5%] h-px bg-gradient-to-r from-orange-500 to-pink-500 origin-left"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              style={{ right: "12.5%" }}
-            />
+    <div className="relative">
 
-            {milestones.map((m, i) => (
+      {/* Línea base */}
+      <div
+        className="
+        hidden md:block
+        absolute
+        top-[16px]
+        left-[12.5%]
+        right-[12.5%]
+        h-[2px]
+        bg-white/10
+        z-0
+      "
+      />
+
+      {/* Línea animada */}
+      <motion.div
+        className="
+        hidden md:block
+        absolute
+        top-[16px]
+        left-[12.5%]
+        h-[2px]
+        bg-gradient-to-r
+        from-cyan-400
+        via-orange-500
+        to-pink-500
+        origin-left
+        z-10
+        shadow-[0_0_20px_rgba(249,115,22,.8)]
+      "
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5 }}
+        style={{ right: "12.5%" }}
+      />
+
+      {/* Cards */}
+      <div className="grid md:grid-cols-4 gap-12 pt-14">
+
+        {milestones.map((m, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.15 }}
+            whileHover={{ y: -6 }}
+            onMouseEnter={hoverOn}
+            onMouseLeave={hoverOff}
+            className="
+            relative
+            group
+            overflow-visible
+            z-20
+          "
+          >
+
+            {/* Punto superior */}
+            <div className="absolute -top-[54px] left-1/2 -translate-x-1/2 z-50">
+
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                whileHover={{ y: -6 }}
-                onMouseEnter={hoverOn}
-                onMouseLeave={hoverOff}
-                className="relative group"
+                whileHover={{ scale: 1.2 }}
+                className={`
+                w-[34px]
+                h-[34px]
+                rounded-full
+                bg-gradient-to-br ${m.color}
+                flex
+                items-center
+                justify-center
+                border-4
+                border-slate-950
+                shadow-[0_0_30px_rgba(255,255,255,.4)]
+              `}
               >
-                {/* Punto en línea */}
-                <div className="flex justify-center mb-8">
-                  <motion.div
-                    whileHover={{ scale: 1.3 }}
-                    className={`w-[26px] h-[26px] rounded-full bg-gradient-to-br ${m.color} flex items-center justify-center text-sm shadow-lg relative z-10`}
-                  >
-                    <div className="w-2 h-2 bg-white rounded-full" />
-                  </motion.div>
-                </div>
-
-                {/* Card */}
-                <div className="bg-white/5 border border-white/10 rounded-3xl p-7 group-hover:bg-white/8 group-hover:border-white/20 transition-all duration-300">
-                  <div className="text-4xl mb-4">{m.icon}</div>
-                  <div className={`text-xs font-black uppercase tracking-widest mb-2 bg-gradient-to-r ${m.color} bg-clip-text text-transparent`}>
-                    {m.year}
-                  </div>
-                  <h4 className="text-white font-black text-lg mb-3 leading-tight">{m.label}</h4>
-                  <p className="text-white/40 text-sm leading-relaxed">{m.desc}</p>
-                  <div className={`mt-5 inline-block text-xs font-bold px-3 py-1.5 rounded-full bg-white/10 text-white/60`}>
-                    {m.stat}
-                  </div>
-                </div>
+                <div className="w-2.5 h-2.5 bg-white rounded-full" />
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
+            </div>
+
+            {/* Card */}
+            <div
+              className="
+              relative
+              overflow-hidden
+              rounded-[2.5rem]
+              border border-white/10
+              bg-[#0b1020]/90
+              backdrop-blur-xl
+              px-8
+              py-12
+              min-h-[430px]
+              text-center
+              flex
+              flex-col
+              justify-center
+              items-center
+              shadow-[0_0_40px_rgba(0,0,0,0.45)]
+              transition-all
+              duration-500
+              group-hover:-translate-y-2
+              group-hover:border-cyan-400/30
+            "
+            >
+
+              {/* Glow */}
+              <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_55%)]" />
+
+              {/* Icono */}
+              <div
+                className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${m.color}
+                flex items-center justify-center
+                shadow-[0_0_30px_rgba(56,189,248,.6)]
+                mb-5`}
+              >
+                <m.icon
+                  size={28}
+                  className="text-white"
+                />
+              </div>
+
+              {/* Año */}
+              <span className="text-cyan-400 font-bold text-xl mb-2">
+                {m.year}
+              </span>
+
+              {/* Título */}
+              <h4 className="text-white font-black text-[30px] leading-tight mb-4">
+                {m.label}
+              </h4>
+
+              {/* Descripción */}
+              <p className="text-white/60 text-sm leading-8 max-w-[260px]">
+                {m.desc}
+              </p>
+
+              {/* Badge */}
+              <div className="mt-6 px-4 py-2 rounded-full bg-white/10 text-white/70 text-sm font-bold">
+                {m.stat}
+              </div>
+
+            </div>
+          </motion.div>
+        ))}
+
+      </div>
+    </div>
+  </div>
+</section>
       {/* ══════════════════════════════════════════════
           EQUIPO — Cards con hover reveal bio
          ══════════════════════════════════════════════ */}
