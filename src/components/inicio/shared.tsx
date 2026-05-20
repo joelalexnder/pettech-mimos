@@ -31,7 +31,7 @@ export function WalkingPaws() {
         }];
         return next.slice(-16);
       });
-    }, 300);
+    }, 480);
     return () => clearInterval(iv);
   }, []);
 
