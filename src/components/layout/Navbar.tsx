@@ -10,6 +10,8 @@ const navLinks = [
   { label: "Tienda & IA", href: "/tienda" },
   { label: "Nosotros", href: "/conocenos" },
   { label: "Conoce a tu perro", href: "/conoce-a-tu-perro" },
+  { label: "Consulta IA", href: "/consulta" },
+  { label: "Probador Virtual", href: "/probador-virtual" },
 ];
 
 const socials = [
