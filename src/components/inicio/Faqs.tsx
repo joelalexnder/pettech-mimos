@@ -7,7 +7,7 @@ import { FadeUp, Reveal } from "./shared";
 const faqs = [
   {
     q: "¿Cuánto tiempo dura el servicio de grooming?",
-    a: "Depende de la raza y el servicio elegido. En promedio, el baño y corte toma entre 2 y 4 hours. Te avisamos cuando esté listo vía WhatsApp.",
+    a: "Depende de la raza y el servicio elegido. En promedio, el baño y corte toma entre 2 y 4 horas. Te avisamos cuando esté listo vía WhatsApp.",
   },
   {
     q: "¿Puedo ver a mi mascota en las cámaras desde casa?",
