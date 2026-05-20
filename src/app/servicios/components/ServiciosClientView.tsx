@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { generarLinkWhatsApp } from "@/lib/whatsapp";
 import { ServiceItem } from "../constants";
+import Link from "next/link"; // 👈 Importamos Link para la navegación interna
 
 interface Props {
   services: ServiceItem[];
@@ -74,15 +75,27 @@ export default function ServiciosClientView({ services }: Props) {
                 ))}
               </ul>
 
-              {/* Botón de Reservar */}
-              <a
-                href={generarLinkWhatsApp(service.waMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-gradient-to-r ${service.gradient} text-white font-bold text-sm rounded-xl shadow-lg transition-transform duration-200 active:scale-95 cursor-pointer select-none`}
-              >
-                <span>💬</span> Reservar por WhatsApp
-              </a>
+              {/* 🎛️ BOTÓN DINÁMICO (WhatsApp o Tienda) */}
+              {service.href ? (
+                /* Botón exclusivo para Accesorios que redirige a la Tienda */
+                <Link
+                  href={service.href}
+                  className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-gradient-to-r ${service.gradient} text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center`}
+                >
+                  <span>🛍️</span> Explorar Tienda
+                </Link>
+              ) : (
+                /* Botón clásico de reservas para los demás servicios */
+                <a
+                  href={generarLinkWhatsApp(service.waMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-gradient-to-r ${service.gradient} text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center`}
+                >
+                  <span>💬</span> Reservar por WhatsApp
+                </a>
+              )}
+
             </motion.div>
           </div>
         ))}

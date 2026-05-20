@@ -10,6 +10,7 @@ export interface ServiceItem {
   gradient: string;
   waMessage: string;
   benefits: string[];
+  href?: string; // 👈 Propiedad opcional para redirigir a rutas internas como /tienda
 }
 
 export const SERVICES_DATA: ServiceItem[] = [
@@ -65,6 +66,25 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Cortes de raza y deslanado profesional",
       "Corte de uñas seguro y limpieza de oídos",
       "Uso exclusivo de champús hipoalergénicos orgánicos"
+    ]
+  },
+  {
+    id: "accesorios-premium",
+    title: "Accesorios & Boutique",
+    tagline: "Moda, juguetes interactivos y estilo único",
+    description: "Explora nuestro catálogo exclusivo de productos diseñados para mejorar el día a día de tu compañero. Desde arneses ergonómicos de alta resistencia hasta juguetes de estimulación cognitiva y snacks interactivos saludables.",
+    emoji: "🛍️",
+    image: "https://m.media-amazon.com/images/I/81mYgpgslRL.jpg", // Imagen estética de una mascota con accesorios/juguetes
+    badge: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
+    accent: "text-emerald-500",
+    gradient: "from-emerald-500 to-teal-600",
+    href: "/tienda", // 👈 Apunta directo a tu página de tienda
+    waMessage: "", // Queda vacío ya que priorizaremos el link interno
+    benefits: [
+      "Juguetes de estimulación mental e interactivos",
+      "Collares y arneses ergonómicos garantizados",
+      "Platos anti-ansiedad y accesorios de paseo",
+      "Snacks e insumos de alta calidad nutricional"
     ]
   }
 ];
