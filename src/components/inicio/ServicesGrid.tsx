@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeUp, Reveal } from "./shared";
 
 const services = [
   {
-    img: "https://i.pinimg.com/1200x/21/7c/c8/217cc88c6f9d0e91ff841af767b98086.jpg",
+    img: "/images/hotel.webp",
     title: "Hospedaje Premium",
     desc: "Tu peludito duerme cómodo, seguro y feliz. Habitaciones individuales con cámaras en tiempo real.",
     accent: "#0ea5e9",
@@ -14,7 +15,7 @@ const services = [
     icon: "🏠",
   },
   {
-    img: "https://i.pinimg.com/1200x/a4/2b/14/a42b14e8a8207d36d2a935e297f2ea4f.jpg",
+    img: "/images/colegio.webp",
     title: "Colegio Canino",
     desc: "Entrenamiento positivo con expertos. Tu perro aprende modales, obediencia y socialización.",
     accent: "#8b5cf6",
@@ -22,7 +23,7 @@ const services = [
     icon: "🎓",
   },
   {
-    img: "https://i.pinimg.com/736x/0e/98/c0/0e98c0c56bc1533d30a909048b4c2d3d.jpg",
+    img: "/images/grooming.webp",
     title: "Peluquería & Spa",
     desc: "Baño, corte, hidratación y perfume. Deja que tu mascota luzca increíble con nuestros expertos.",
     accent: "#ec4899",
@@ -30,7 +31,7 @@ const services = [
     icon: "✂️",
   },
   {
-    img: "https://i.pinimg.com/736x/c7/3d/79/c73d79e7e94636bca579b7cb2fc4b832.jpg",
+    img: "/images/probador.webp",
     title: "Probador IA",
     desc: "Visualiza estilos y accesorios en tu mascota con inteligencia artificial. Primera en Perú.",
     accent: "#f59e0b",
@@ -72,22 +73,20 @@ export default function ServicesGrid() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <motion.div
-                whileHover={{ y: -10 }}
-                transition={{ type: "spring", stiffness: 400 }}
-                className="group bg-white rounded-[1.8rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:border-transparent transition-all duration-300"
-              >
+              {/* hover:-translate-y-2.5 reemplaza whileHover y:-10 */}
+              <div className="group bg-white rounded-[1.8rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:border-transparent hover:-translate-y-2.5 transition-all duration-300">
                 <div className="relative h-52 overflow-hidden">
-                  <motion.div
-                    className="w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url(${s.img})` }}
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ duration: 0.6 }}
+                  <Image
+                    src={s.img}
+                    alt={s.title}
+                    fill
+                    quality={80}
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-slate-900 text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full">
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-slate-900 text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full z-10">
                     {s.tag}
                   </div>
-                  <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-lg shadow">
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-lg shadow z-10">
                     {s.icon}
                   </div>
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -99,7 +98,9 @@ export default function ServicesGrid() {
                     {s.title}
                   </h3>
                   <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
-                  <motion.div className="h-0.5 rounded-full mt-5 origin-left"
+                  {/* Esta línea sí mantiene motion porque depende del viewport */}
+                  <motion.div
+                    className="h-0.5 rounded-full mt-5 origin-left"
                     style={{ background: s.accent }}
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
@@ -107,19 +108,19 @@ export default function ServicesGrid() {
                     transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
                   />
                 </div>
-              </motion.div>
+              </div>
             </FadeUp>
           ))}
         </div>
 
         <FadeUp delay={0.2} className="text-center mt-14">
-          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-            <Link href="/servicios"
-              className="inline-flex items-center gap-2 px-9 py-4 border-2 border-slate-900 text-slate-900 font-black rounded-full text-sm uppercase tracking-wider hover:bg-slate-900 hover:text-white transition-colors duration-300"
-            >
-              Ver todos los servicios →
-            </Link>
-          </motion.div>
+          {/* hover:scale-104 reemplaza whileHover scale */}
+          <Link
+            href="/servicios"
+            className="inline-flex items-center gap-2 px-9 py-4 border-2 border-slate-900 text-slate-900 font-black rounded-full text-sm uppercase tracking-wider hover:bg-slate-900 hover:text-white hover:scale-105 active:scale-95 transition-all duration-300"
+          >
+            Ver todos los servicios →
+          </Link>
         </FadeUp>
       </div>
     </section>

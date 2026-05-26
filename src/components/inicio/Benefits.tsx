@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeUp, Reveal } from "./shared";
 
@@ -37,22 +38,25 @@ export default function Benefits() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {beneficios.map((b, i) => (
             <FadeUp key={i} delay={i * 0.08}>
-              <motion.div
-                whileHover={{ y: -6, borderColor: "rgba(249,115,22,0.4)" }}
-                className="bg-white/5 border border-white/10 rounded-3xl p-8 transition-all duration-300 hover:bg-white/8 group"
-              >
+              {/* hover:-translate-y-1.5 y hover:border-orange-500/40 reemplazan whileHover */}
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-8 transition-all duration-300 hover:bg-white/8 hover:-translate-y-1.5 hover:border-orange-500/40 group">
                 <div className="text-3xl mb-5">{b.icon}</div>
                 <h3 className="font-black text-white text-lg mb-3 group-hover:text-orange-400 transition-colors duration-300">{b.title}</h3>
                 <p className="text-white/45 text-sm leading-relaxed">{b.desc}</p>
-              </motion.div>
+              </div>
             </FadeUp>
           ))}
         </div>
 
         <FadeUp delay={0.2} className="mt-20">
           <div className="relative rounded-3xl overflow-hidden h-72 md:h-96">
-            <div className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url(https://i.pinimg.com/1200x/62/93/c4/6293c4fe49e40d579614e2c67dcc1a38.jpg)" }} />
+            <Image
+              src="/images/familia.webp"
+              alt="El pet club favorito de Tacna"
+              fill
+              quality={80}
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
             <div className="absolute inset-0 flex items-center px-12 md:px-20">
               <div className="max-w-lg">
@@ -67,13 +71,13 @@ export default function Benefits() {
                   </p>
                 </FadeUp>
                 <FadeUp delay={0.3}>
-                  <motion.a
+                  {/* hover:scale-105 reemplaza whileHover scale */}
+                  <a
                     href="https://wa.me/51910918802"
-                    whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
-                    className="mt-8 inline-flex items-center gap-2 px-7 py-3.5 bg-orange-500 text-white font-black rounded-full text-sm"
+                    className="mt-8 inline-flex items-center gap-2 px-7 py-3.5 bg-orange-500 text-white font-black rounded-full text-sm hover:scale-105 active:scale-97 transition-transform duration-200"
                   >
                     Visítanos →
-                  </motion.a>
+                  </a>
                 </FadeUp>
               </div>
             </div>
