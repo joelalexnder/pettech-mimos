@@ -1,19 +1,25 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { FadeUp, Reveal } from "./shared";
 
 export default function FinalCta() {
   return (
     <section className="relative py-40 overflow-hidden bg-[#fdfbf7] text-center">
+      {/* Patitas decorativas con CSS puro en vez de motion */}
       {[...Array(8)].map((_, i) => (
-        <motion.div key={i} className="absolute text-slate-200 select-none pointer-events-none"
-          style={{ left: `${8 + i * 12}%`, top: `${10 + (i % 4) * 25}%`, fontSize: `${1.5 + (i % 3) * 0.7}rem` }}
-          animate={{ y: [0, -14, 0], rotate: [`${-25 + i * 10}deg`, `${-10 + i * 10}deg`, `${-25 + i * 10}deg`] }}
-          transition={{ duration: 3.5 + i * 0.4, repeat: Infinity, delay: i * 0.3 }}
+        <span
+          key={i}
+          className="absolute text-slate-200 select-none pointer-events-none animate-float"
+          style={{
+            left: `${8 + i * 12}%`,
+            top: `${10 + (i % 4) * 25}%`,
+            fontSize: `${1.5 + (i % 3) * 0.7}rem`,
+            animationDelay: `${i * 0.3}s`,
+            animationDuration: `${3.5 + i * 0.4}s`,
+          }}
         >
           🐾
-        </motion.div>
+        </span>
       ))}
 
       <div className="relative z-10 max-w-4xl mx-auto px-6">
@@ -37,22 +43,21 @@ export default function FinalCta() {
 
         <FadeUp delay={0.4}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.a
+            {/* hover:scale-106 + hover:-translate-y-1 reemplazan whileHover */}
+            <a
               href="https://wa.me/51910918802?text=Hola!%20Quiero%20agendar%20un%20servicio%20en%20Mimos%20Pet%20Club"
               target="_blank" rel="noopener noreferrer"
-              whileHover={{ scale: 1.06, y: -4 }} whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-2 px-12 py-5 bg-orange-500 text-white font-black rounded-full text-base uppercase tracking-wider shadow-2xl shadow-orange-500/30"
+              className="inline-flex items-center justify-center gap-2 px-12 py-5 bg-orange-500 text-white font-black rounded-full text-base uppercase tracking-wider shadow-2xl shadow-orange-500/30 hover:scale-105 hover:-translate-y-1 active:scale-95 transition-all duration-200"
             >
               📅 Agendar ahora por WhatsApp
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="https://wa.me/51910918802?text=Hola!%20Quisiera%20saber%20cómo%20llegar%20a%20Mimos%20Pet%20Club"
               target="_blank" rel="noopener noreferrer"
-              whileHover={{ scale: 1.06, y: -4 }} whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-2 px-10 py-5 border-2 border-slate-900 text-slate-900 font-black rounded-full text-base uppercase tracking-wider"
+              className="inline-flex items-center justify-center gap-2 px-10 py-5 border-2 border-slate-900 text-slate-900 font-black rounded-full text-base uppercase tracking-wider hover:scale-105 hover:-translate-y-1 active:scale-95 transition-all duration-200"
             >
               📍 Ver ubicación
-            </motion.a>
+            </a>
           </div>
         </FadeUp>
       </div>

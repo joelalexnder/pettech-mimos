@@ -28,6 +28,7 @@ export default function ProcessSteps() {
 
         <div className="relative">
           <div className="hidden lg:block absolute top-[52px] left-[10%] right-[10%] h-px bg-slate-200" />
+          {/* Esta línea sí mantiene motion porque anima al entrar en viewport */}
           <motion.div
             className="hidden lg:block absolute top-[52px] left-[10%] h-px bg-linear-to-r from-orange-500 to-pink-400 origin-left"
             style={{ right: "10%" }}
@@ -40,24 +41,20 @@ export default function ProcessSteps() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
             {proceso.map((p, i) => (
               <FadeUp key={i} delay={i * 0.12}>
-                <motion.div
-                  whileHover={{ y: -8 }}
-                  className="flex flex-col items-center text-center group"
-                >
+                {/* hover:-translate-y-2 reemplaza whileHover y:-8 */}
+                <div className="flex flex-col items-center text-center group hover:-translate-y-2 transition-transform duration-300">
                   <div className="relative mb-8">
-                    <motion.div
-                      whileHover={{ scale: 1.15, rotate: 10 }}
-                      className="w-[60px] h-[60px] rounded-2xl bg-slate-900 flex items-center justify-center text-2xl shadow-xl relative z-10 group-hover:bg-orange-500 transition-colors duration-300"
-                    >
+                    {/* hover:scale-115 + hover:rotate-10 reemplazan whileHover en el ícono */}
+                    <div className="w-[60px] h-[60px] rounded-2xl bg-slate-900 flex items-center justify-center text-2xl shadow-xl relative z-10 group-hover:bg-orange-500 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                       {p.icon}
-                    </motion.div>
+                    </div>
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-[10px] font-black z-20">
                       {p.n}
                     </div>
                   </div>
                   <h4 className="font-black text-slate-900 text-base mb-2">{p.title}</h4>
                   <p className="text-slate-500 text-sm leading-relaxed">{p.desc}</p>
-                </motion.div>
+                </div>
               </FadeUp>
             ))}
           </div>

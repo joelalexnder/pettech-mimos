@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { FadeUp, Reveal } from "./shared";
 
 const testimonios = [
@@ -56,10 +55,8 @@ export default function Testimonials() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {testimonios.map((t, i) => (
             <FadeUp key={i} delay={i * 0.09}>
-              <motion.div
-                whileHover={{ y: -8 }}
-                className="bg-slate-50 border border-slate-100 rounded-3xl p-7 hover:border-orange-200 hover:shadow-lg transition-all duration-300"
-              >
+              {/* hover:-translate-y-2 reemplaza whileHover y:-8 */}
+              <div className="bg-slate-50 border border-slate-100 rounded-3xl p-7 hover:border-orange-200 hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
                 <div className="flex gap-0.5 mb-5">
                   {Array.from({ length: t.rating }).map((_, si) => (
                     <span key={si} className="text-orange-400 text-sm">★</span>
@@ -75,7 +72,7 @@ export default function Testimonials() {
                     <div className="text-slate-400 text-xs">{t.pet}</div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </FadeUp>
           ))}
         </div>
