@@ -6,14 +6,16 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 interface NavLink { label: string; href: string }
-interface Social   { id: string; href: string; path: string; label: string }
+interface Social { id: string; href: string; path: string; label: string }
 
 const NAV_LINKS: NavLink[] = [
-  { label: "Inicio",           href: "/" },
-  { label: "Servicios",        href: "/servicios" },
-  { label: "Tienda & IA",      href: "/tienda" },
-  { label: "Nosotros",         href: "/conocenos" },
-  { label: "Conoce a tu Mascota",href: "/conoce-a-tu-perro" },
+  { label: "Inicio", href: "/" },
+  { label: "Servicios", href: "/servicios" },
+  { label: "Tienda & IA", href: "/tienda" },
+  { label: "Nosotros", href: "/conocenos" },
+  { label: "Conoce a tu Mascota", href: "/conoce-a-tu-perro" },
+  { label: "Consulta IA", href: "/consulta" },
+  { label: "Probador Virtual", href: "/probador-virtual" },
 ];
 
 const SOCIALS: Social[] = [
