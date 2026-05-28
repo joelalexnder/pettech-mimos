@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { generarLinkWhatsApp } from "@/lib/whatsapp";
 import { ServiceItem } from "../constants";
-import Link from "next/link"; // 👈 Importamos Link para la navegación interna
+import Link from "next/link"; 
 
 interface Props {
   services: ServiceItem[];
@@ -19,13 +19,12 @@ export default function ServiciosClientView({ services }: Props) {
             id={service.id}
             className="scroll-mt-32 grid lg:grid-cols-2 gap-16 items-center"
           >
-            {/* 📷 CONTENEDOR DE IMAGEN */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className={`relative z-20 rounded-[2rem] overflow-hidden shadow-xl aspect-[4/3] w-full ${
+              className={`relative z-20 rounded-4xl overflow-hidden shadow-xl aspect-4/3 w-full ${
                 idx % 2 === 1 ? "lg:order-2" : ""
               }`}
             >
@@ -34,7 +33,7 @@ export default function ServiciosClientView({ services }: Props) {
                 alt={`${service.title} - Mimos Pet Club`}
                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-6 left-6">
                 <div className={`inline-flex items-center gap-2 ${service.badge} border border-white/20 shadow-md px-4 py-1.5 rounded-full text-xs font-bold`}>
                   <span>{service.emoji}</span>
@@ -43,7 +42,6 @@ export default function ServiciosClientView({ services }: Props) {
               </div>
             </motion.div>
 
-            {/* 📝 BLOQUE DE TEXTO */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -61,11 +59,10 @@ export default function ServiciosClientView({ services }: Props) {
                 {service.description}
               </p>
 
-              {/* Beneficios */}
               <ul className="space-y-3.5 mb-10">
                 {service.benefits.map((benefit, bi) => (
                   <li key={bi} className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                    <div className={`w-5 h-5 rounded-full bg-linear-to-br ${service.gradient} flex items-center justify-center shrink-0 mt-0.5`}>
                       <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
@@ -75,22 +72,19 @@ export default function ServiciosClientView({ services }: Props) {
                 ))}
               </ul>
 
-              {/* 🎛️ BOTÓN DINÁMICO (WhatsApp o Tienda) */}
               {service.href ? (
-                /* Botón exclusivo para Accesorios que redirige a la Tienda */
                 <Link
                   href={service.href}
-                  className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-gradient-to-r ${service.gradient} text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center`}
+                  className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-linear-to-r ${service.gradient} text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center`}
                 >
                   <span>🛍️</span> Explorar Tienda
                 </Link>
               ) : (
-                /* Botón clásico de reservas para los demás servicios */
                 <a
                   href={generarLinkWhatsApp(service.waMessage)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-gradient-to-r ${service.gradient} text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center`}
+                  className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-linear-to-r ${service.gradient} text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center`}
                 >
                   <span>💬</span> Reservar por WhatsApp
                 </a>

@@ -1,13 +1,21 @@
+
 import type { Metadata } from "next";
-import { WalkingPaws, ScrollBar } from "@/components/inicio/shared";
+import dynamic from "next/dynamic";
+
+
+
+import { ScrollBar } from "@/components/inicio/shared";
+import WalkingPaws from "@/components/WalkingPaws"; 
 import Hero from "@/components/inicio/Hero";
 import Metrics from "@/components/inicio/Metrics";
-import ServicesGrid from "@/components/inicio/ServicesGrid";
-import Benefits from "@/components/inicio/Benefits";
-import ProcessSteps from "@/components/inicio/ProcessSteps";
-import Testimonials from "@/components/inicio/Testimonials";
-import Faqs from "@/components/inicio/Faqs";
-import FinalCta from "@/components/inicio/FinalCta";
+import BannerTraslado from "@/components/inicio/BannerTraslado ";
+
+const ServicesGrid = dynamic(() => import("@/components/inicio/ServicesGrid"));
+const Benefits = dynamic(() => import("@/components/inicio/Benefits"));
+const ProcessSteps = dynamic(() => import("@/components/inicio/ProcessSteps"));
+const Testimonials = dynamic(() => import("@/components/inicio/Testimonials"));
+const Faqs = dynamic(() => import("@/components/inicio/Faqs"));
+const FinalCta = dynamic(() => import("@/components/inicio/FinalCta"));
 
 export const metadata: Metadata = {
   title: "Mimos Pet Club | Hospedaje y Grooming en Tacna",
@@ -26,11 +34,13 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="overflow-hidden bg-[#fdfbf7] md:cursor-none">
+    <main className="overflow-hidden bg-[#fdfbf7]">
       <WalkingPaws />
       <ScrollBar />
       <Hero />
       <Metrics />
+      <BannerTraslado />
+
       <ServicesGrid />
       <Benefits />
       <ProcessSteps />

@@ -1,8 +1,10 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { motion, Variants } from "framer-motion"; // <-- 1. Importar Variants
+import { motion, Variants } from "framer-motion";
 import { Sparkles, Star } from "lucide-react";
+import { ScrollBar } from "@/components/inicio/shared";
+import { main } from "framer-motion/client";
 
 const EscanerMascota = dynamic(() => import("@/components/features/EscanerMascota"), {
     loading: () => (
@@ -11,8 +13,6 @@ const EscanerMascota = dynamic(() => import("@/components/features/EscanerMascot
     ssr: false, 
 });
 
-/* ─── Variantes fuera del componente ───────────────────────── */
-// 2. Tipar explícitamente como : Variants
 const heroVariant: Variants = {
     hidden: { opacity: 0, y: 28 },
     show: {
@@ -37,12 +37,13 @@ const scannerVariant: Variants = {
     },
 };
 
-/* ─── Emojis de mascotas para el social proof ─────────────── */
 const PETS = ["🐶", "🐕", "🦮", "🐩"] as const;
 
-/* ─── Componente ─────────────────────────────────────────────── */
 export default function ConoceATuPerroPage() {
     return (
+        <main>
+            <ScrollBar />
+        
         <div className="min-h-screen bg-[#f8faf9] pt-28 pb-24 px-4 lg:px-8 relative overflow-hidden">
 
             <div aria-hidden className="absolute top-0 right-0 w-[55%] h-[70%] bg-linear-to-bl from-teal-50 to-transparent rounded-bl-[120px] pointer-events-none" />
@@ -54,14 +55,12 @@ export default function ConoceATuPerroPage() {
 
             <div className="relative z-10 max-w-7xl mx-auto">
 
-                {/* ── Hero Header ─────────────────────────────── */}
                 <motion.div
                     variants={heroVariant}
                     initial="hidden"
                     animate="show"
                     className="mb-14 max-w-2xl"
                 >
-                    {/* Badge */}
                     <motion.div
                         variants={badgeVariant}
                         initial="hidden"
@@ -70,19 +69,13 @@ export default function ConoceATuPerroPage() {
                     >
                         <Sparkles className="w-3.5 h-3.5 text-teal-500" aria-hidden />
                         MIMOS VISION AI
-                        {/* Dot pulsante — CSS puro */}
                         <span aria-hidden className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
                     </motion.div>
 
-                    {/* H1 principal */}
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-5 leading-[1.1] tracking-tight">
                         Descubre qué hace{" "}
                         <span className="relative inline-block">
                             <span className="relative z-10 text-teal-600">único</span>
-                            {/*
-                              SVG inline ligero (~120 bytes) para el subrayado decorativo.
-                              preserveAspectRatio="none" + CSS height → no bloquea layout.
-                            */}
                             <svg
                                 aria-hidden
                                 className="absolute -bottom-1 left-0 w-full"
@@ -103,16 +96,13 @@ export default function ConoceATuPerroPage() {
                         a tu perro
                     </h1>
 
-                    {/* Descripción */}
                     <p className="text-lg text-slate-500 leading-relaxed max-w-xl">
                         Nuestra IA analiza los rasgos físicos de tu mascota en segundos.
                         Toma una foto y descubre su raza, personalidad y qué servicios de{" "}
                         <span className="font-semibold text-slate-700">Mimos Pet Club</span> le van mejor.
                     </p>
 
-                    {/* Social proof */}
                     <div className="flex items-center gap-3 mt-6">
-                        {/* Avatares */}
                         <div className="flex -space-x-2" aria-hidden>
                             {PETS.map((emoji, i) => (
                                 <div
@@ -124,7 +114,6 @@ export default function ConoceATuPerroPage() {
                             ))}
                         </div>
                         <div>
-                            {/* Estrellas — lista de iconos pequeños, sin JS extra */}
                             <div className="flex items-center gap-0.5" aria-label="5 estrellas">
                                 {Array.from({ length: 5 }).map((_, i) => (
                                     <Star key={i} className="w-3.5 h-3.5 fill-orange-400 text-orange-400" aria-hidden />
@@ -134,8 +123,6 @@ export default function ConoceATuPerroPage() {
                         </div>
                     </div>
                 </motion.div>
-
-                {/* ── Escáner (lazy loaded) ────────────────────── */}
                 <motion.div
                     variants={scannerVariant}
                     initial="hidden"
@@ -143,13 +130,12 @@ export default function ConoceATuPerroPage() {
                 >
                     <EscanerMascota />
                 </motion.div>
-
-                {/* ── Disclaimer ──────────────────────────────── */}
                 <p className="text-center text-xs text-slate-400 mt-16 max-w-md mx-auto leading-relaxed">
                     Los resultados son orientativos. Para una identificación precisa de la raza,
                     consulta a un veterinario.
                 </p>
             </div>
         </div>
+        </main>
     );
 }

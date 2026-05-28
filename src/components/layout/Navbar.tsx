@@ -5,11 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-/* ─── tipos ─────────────────────────────────────────────── */
 interface NavLink { label: string; href: string }
 interface Social   { id: string; href: string; path: string; label: string }
 
-/* ─── datos estáticos fuera del componente ───────────────── */
 const NAV_LINKS: NavLink[] = [
   { label: "Inicio",           href: "/" },
   { label: "Servicios",        href: "/servicios" },
@@ -40,9 +38,8 @@ const SOCIALS: Social[] = [
 ];
 
 const WHATSAPP_URL =
-  "https://wa.me/51910918802?text=Hola!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n";
+  "https://wa.me/51952189680?text=Hola!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n";
 
-/* ─── sub-componentes memoizados ─────────────────────────── */
 const SocialIcon = memo(({ social }: { social: Social }) => (
   <a
     href={social.href}
@@ -79,18 +76,22 @@ const NavLinkItem = memo(
 );
 NavLinkItem.displayName = "NavLinkItem";
 
-/* ─── componente principal ───────────────────────────────── */
 export default function Navbar() {
   const [isOpen,   setIsOpen]   = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  const lightBackgroundRoutes = ["/conoce-a-tu-perro"]; 
+  const forceSolidBackground = lightBackgroundRoutes.includes(pathname);
+
   useEffect(() => {
     let ticking = false;
+    const scrollThreshold = 300; 
+
     const onScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 30);
+          setScrolled(window.scrollY > scrollThreshold);
           ticking = false;
         });
         ticking = true;
@@ -107,25 +108,18 @@ export default function Navbar() {
 
   return (
     <>
-      <header
-        className={`
-          fixed top-0 left-0 right-0 z-50 transition-all duration-300
-          ${scrolled
-            ? "bg-slate-900/35 backdrop-blur-md shadow-lg shadow-black/20 py-0"
-            : "bg-linear-to-b from-black/60 to-transparent py-0"}
-        `}
-      >
-        <div className="max-w-360 mx-auto px-4 sm:px-6 lg:px-10">
+        <header
+          className={`
+            fixed top-0 left-0 right-0 z-50 
+            transition-all duration-700 ease-in-out
+            ${(scrolled || forceSolidBackground)
+              ? "bg-slate-900/40 backdrop-blur-md shadow-lg shadow-black/20 py-0"
+              : "bg-linear-to-b from-black/60 to-transparent py-0"}
+          `}
+        >
+          <div className="max-w-360 mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between gap-4">
 
-            {/* ── Logo ── */}
-            {/*
-              📌 INSTRUCCIONES PARA TU LOGO:
-              - Reemplaza "/logo-mimos.png" con la ruta real de tu imagen en /public
-              - Ajusta width y height al tamaño REAL de tu logo (en px)
-              - Si tu logo tiene fondo transparente (PNG/WebP) funciona perfecto sobre cualquier hero
-              - priority={true} porque está en el viewport inicial (LCP)
-            */}
             <Link
               href="/"
               className="shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 rounded-xl"
@@ -137,11 +131,10 @@ export default function Navbar() {
                 width={100}
                 height={36}
                 priority
-                className="object-contain group-hover:scale-105 transition-transform duration-200 drop-shadow-md"
+                className="w-auto object-contain group-hover:scale-105 transition-transform duration-200 drop-shadow-md"
               />
             </Link>
 
-            {/* ── Desktop Nav ── */}
             <nav
               className="hidden lg:flex items-center gap-1"
               aria-label="Navegación principal"
@@ -151,7 +144,6 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* ── Sociales + CTA ── */}
             <div className="hidden lg:flex items-center gap-3">
               <div className="flex items-center gap-0.5 border-r border-white/20 pr-3">
                 {SOCIALS.map((s) => (
@@ -168,8 +160,6 @@ export default function Navbar() {
                 Contáctanos
               </a>
             </div>
-
-            {/* ── Hamburger ── */}
             <button
               onClick={toggleMenu}
               className="lg:hidden p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
@@ -187,7 +177,6 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* ── Mobile Drawer ── */}
       <div
         onClick={closeMenu}
         className={`lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
@@ -195,8 +184,6 @@ export default function Navbar() {
         }`}
         aria-hidden="true"
       />
-
-      {/* Drawer panel */}
       <nav
         id="mobile-menu"
         aria-label="Menú móvil"
@@ -207,7 +194,7 @@ export default function Navbar() {
           ${isOpen ? "translate-x-0" : "translate-x-full"}
         `}
       >
-        {/* Drawer header */}
+
           <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
           <Image
             src="/logo-mimos-pet-club.png"  
@@ -228,7 +215,6 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Links */}
         <div className="flex flex-col gap-1 px-3 py-4 flex-1 overflow-y-auto">
           {NAV_LINKS.map((link) => (
             <Link
@@ -243,14 +229,13 @@ export default function Navbar() {
               `}
             >
               {pathname === link.href && (
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-400 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-orange-400 shrink-0" />
               )}
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* Footer del drawer */}
         <div className="px-4 py-5 border-t border-white/10 space-y-4">
           <div className="flex justify-center gap-3">
             {SOCIALS.map((s) => (

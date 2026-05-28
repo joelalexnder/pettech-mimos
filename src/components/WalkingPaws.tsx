@@ -46,7 +46,7 @@ export default function WalkingPaws() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[10] overflow-hidden mix-blend-difference">
+    <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden mix-blend-difference">
       <AnimatePresence>
         {paws.map((p, i) => (
           <motion.div
@@ -57,8 +57,6 @@ export default function WalkingPaws() {
               transform: `translateY(${p.ySide * 8}px)` 
             }}
             initial={{ opacity: 0, scale: 0.3 }}
-            // 📉 AJUSTE DE OPACIDAD: Bajamos la opacidad máxima a 0.25 (25%) para que sea un tono grisáceo/opaco muy fino y elegante.
-            // El rastro más antiguo se va desvaneciendo sutilmente hacia el 0.05.
             animate={{ opacity: 0.25 - (paws.length - 1 - i) * 0.015, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, ease: "easeOut" }}

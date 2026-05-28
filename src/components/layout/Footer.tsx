@@ -8,7 +8,6 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12 pb-12 border-b border-white/10">
 
-            {/* Brand col */}
             <div className="md:col-span-1">
               <div className="font-black text-2xl tracking-tighter mb-4">
                 MIMOS <span className="text-orange-500">PET</span> CLUB
@@ -30,7 +29,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Servicios */}
             <div>
               <div className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Servicios</div>
               <ul className="space-y-3">
@@ -49,7 +47,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Empresa */}
             <div>
               <div className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Empresa</div>
               <ul className="space-y-3">
@@ -68,7 +65,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Contacto */}
             <div>
               <div className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Contacto</div>
               <ul className="space-y-4 text-sm">
@@ -78,7 +74,7 @@ export default function Footer() {
                 </li>
                 <li className="flex gap-3">
                   <span className="text-orange-500 shrink-0">📞</span>
-                  <a href="tel:+51910918802" className="text-white/50 hover:text-white transition-colors">+51 910 918 802</a>
+                  <a href="tel:+51952189680" className="text-white/50 hover:text-white transition-colors">+51 952 189 680</a>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-orange-500 shrink-0">📧</span>
@@ -90,9 +86,8 @@ export default function Footer() {
                 </li>
               </ul>
 
-              {/* WhatsApp CTA en footer */}
               <motion.a
-                href="https://wa.me/51910918802"
+                href="https://wa.me/51952189680"
                 whileHover={{ scale: 1.04 }}
                 className="mt-6 inline-flex items-center gap-2 px-5 py-3 bg-orange-500 text-white font-bold rounded-xl text-sm"
               >
@@ -101,7 +96,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Bottom bar */}
           <div className="pt-8 flex col md:row items-center justify-between gap-4">
             <p className="text-white/25 text-xs tracking-widest uppercase">
               © 2026 Mimos Pet Club · Todos los derechos reservados

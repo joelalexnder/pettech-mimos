@@ -37,7 +37,6 @@ export default function BannerCarruselFondo() {
   return (
     <section className="relative min-h-[85vh] w-full flex items-center overflow-hidden bg-slate-950">
 
-      {/* 🎞️ Carrusel Swiper en el fondo */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <Swiper
           modules={[Autoplay, EffectFade]}
@@ -57,12 +56,10 @@ export default function BannerCarruselFondo() {
           ))}
         </Swiper>
 
-        {/* Filtros oscuros para contraste de texto */}
         <div className="absolute inset-0 bg-black/65 z-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-transparent z-10 pointer-events-none" />
       </div>
 
-      {/* Huellas de fondo decorativas */}
       <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none opacity-10">
         {PAW_POSITIONS.map((paw, i) => (
           <span
@@ -75,7 +72,6 @@ export default function BannerCarruselFondo() {
         ))}
       </div>
 
-      {/* Contenido del Hero sobre el carrusel */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full text-left">
         <span className="inline-flex items-center gap-2 bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-8 select-none">
           🐶 Servicios Premium
@@ -91,7 +87,6 @@ export default function BannerCarruselFondo() {
           diseñados bajo el concepto de bienestar y reforzamiento positivo de Mimos Pet Club.
         </p>
 
-        {/* Botones de píldora para scroll suave */}
         <div className="flex flex-wrap gap-3 mt-10">
           {SERVICES_DATA.map((s) => (
             <button

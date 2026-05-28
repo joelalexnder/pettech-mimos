@@ -5,7 +5,6 @@ import { FadeUp, Reveal } from "./shared";
 export default function FinalCta() {
   return (
     <section className="relative py-40 overflow-hidden bg-[#fdfbf7] text-center">
-      {/* Patitas decorativas con CSS puro en vez de motion */}
       {[...Array(8)].map((_, i) => (
         <span
           key={i}
@@ -43,7 +42,6 @@ export default function FinalCta() {
 
         <FadeUp delay={0.4}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* hover:scale-106 + hover:-translate-y-1 reemplazan whileHover */}
             <a
               href="https://wa.me/51910918802?text=Hola!%20Quiero%20agendar%20un%20servicio%20en%20Mimos%20Pet%20Club"
               target="_blank" rel="noopener noreferrer"

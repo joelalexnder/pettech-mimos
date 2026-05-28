@@ -252,19 +252,19 @@ export default function ConocenosClient() {
         <WalkingPaws />
         <ProgressBar />
 
-        {/* ── HERO ── */}
-        <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0d0d0f]">
-            <motion.div className="absolute inset-0 z-0" style={{ y: heroY }}>
-            <Image
-                src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&w=1920&q=80"
-                alt="Veterinaria Mimos Pet Club"
-                fill
-                className="object-cover"
-                priority
-                unoptimized
-            />
-            <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-[#0d0d0f]" />
-            <div className="absolute inset-0 bg-linear-to-r from-black/60 via-transparent to-transparent" />
+        <section ref={heroRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#0d0d0f]">
+            <motion.div className="absolute inset-0 w-full h-full z-0" style={{ y: heroY }}>
+                
+                <Image
+                    src="/images/hero1.webp" 
+                    alt="Mimos Pet Club - Hospedaje y Colegio Canino"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                
+                <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-[#0d0d0f]" />
+                <div className="absolute inset-0 bg-linear-to-r from-black/60 via-transparent to-transparent" />
             </motion.div>
 
             <motion.div className="relative z-10 max-w-7xl mx-auto px-6 w-full" style={{ opacity: heroOpacity }}>
@@ -298,7 +298,7 @@ export default function ConocenosClient() {
                     className="px-8 py-4 bg-orange-500 text-white font-black rounded-full text-sm uppercase tracking-wider shadow-lg shadow-orange-500/30">
                     Conoce el equipo
                 </motion.a>
-                <motion.a href="https://wa.me/51910918802" onMouseEnter={hoverOn} onMouseLeave={hoverOff} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
+                <motion.a href="https://wa.me/51952189680" onMouseEnter={hoverOn} onMouseLeave={hoverOff} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
                     className="px-8 py-4 border border-white/30 text-white font-medium rounded-full text-sm backdrop-blur-sm">
                     Agenda cita →
                 </motion.a>
@@ -313,21 +313,6 @@ export default function ConocenosClient() {
                 <path d="M6 24L12 32L18 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             </motion.div>
-        </section>
-
-        {/* ── MÉTRICAS ── */}
-        <section className="py-20 bg-[#0d0d0f] border-b border-white/5">
-            <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10">
-            {metrics.map((m, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="bg-[#0d0d0f] px-8 py-12 text-center">
-                <div className="text-5xl md:text-6xl font-black text-white mb-2 tabular-nums">
-                    <AnimatedCounter target={m.value} suffix={m.suffix} />
-                </div>
-                <div className="text-white/40 text-sm uppercase tracking-widest font-medium">{m.label}</div>
-                </motion.div>
-            ))}
-            </div>
         </section>
 
         <section className="py-32 px-6 max-w-7xl mx-auto">
@@ -376,7 +361,6 @@ export default function ConocenosClient() {
             </div>
             </div>
 
-            {/* ── VALORES — diseño renovado ── */}
             <div className="mt-28">
             <div className="overflow-hidden mb-4 text-center">
                 <RevealText text="Nuestros valores" className="text-4xl font-black text-slate-900 tracking-tight block" />
@@ -398,20 +382,16 @@ export default function ConocenosClient() {
                     onMouseLeave={hoverOff}
                     className={`relative overflow-hidden ${v.bg} ${v.border} border rounded-3xl p-8 group cursor-default shadow-sm hover:shadow-xl hover:${v.glow} transition-shadow duration-500`}
                 >
-                    {/* Círculo decorativo de fondo */}
                     <div className={`absolute -top-8 -right-8 w-32 h-32 rounded-full bg-linear-to-br ${v.linear} opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-500`} />
                     <div className={`absolute -bottom-10 -left-6 w-24 h-24 rounded-full bg-linear-to-br ${v.linear} opacity-5 group-hover:opacity-15 transition-all duration-700`} />
 
-                    {/* Icono con glow */}
                     <div className="relative mb-6">
                     <div className={`w-14 h-14 ${v.iconBg} rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
                         <v.icon size={24} strokeWidth={2} />
                     </div>
-                    {/* Halo detrás del icono */}
                     <div className={`absolute inset-0 w-14 h-14 ${v.iconBg} rounded-2xl opacity-20 blur-md group-hover:opacity-40 group-hover:blur-lg transition-all duration-300`} />
                     </div>
 
-                    {/* Número decorativo */}
                     <div className={`absolute top-7 right-7 text-5xl font-black ${v.accent} opacity-10 group-hover:opacity-20 transition-opacity duration-300 leading-none select-none`}>
                     0{i + 1}
                     </div>
@@ -419,7 +399,6 @@ export default function ConocenosClient() {
                     <h4 className="font-black text-slate-900 text-xl mb-3 relative">{v.label}</h4>
                     <p className="text-slate-500 text-sm leading-relaxed relative">{v.desc}</p>
 
-                    {/* Línea inferior con lineare */}
                     <motion.div
                     className={`h-0.5 bg-linear-to-r ${v.linear} rounded-full mt-6 origin-left`}
                     initial={{ scaleX: 0 }}
@@ -433,7 +412,6 @@ export default function ConocenosClient() {
             </div>
         </section>
 
-        {/* ── HISTORIA ── */}
         <section className="py-32 bg-slate-950 overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
             <div className="overflow-hidden mb-24 text-center">
@@ -470,7 +448,6 @@ export default function ConocenosClient() {
             </div>
         </section>
 
-        {/* ── EQUIPO ── */}
         <section id="equipo" className="py-32 bg-[#fdfbf7]">
             <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
@@ -522,35 +499,7 @@ export default function ConocenosClient() {
             </div>
         </section>
 
-        {/* ── TESTIMONIOS ── */}
-        <section className="py-32 bg-slate-900 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6">
-            <div className="overflow-hidden mb-16 text-center">
-                <RevealText text="Lo que dicen las familias" className="text-[clamp(2rem,6vw,4rem)] font-black text-white tracking-tight block" />
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-                {testimonios.map((t, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                    whileHover={{ y: -6 }} onMouseEnter={hoverOn} onMouseLeave={hoverOff}
-                    className="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/8 hover:border-white/20 transition-all duration-300">
-                    <div className="flex gap-1 mb-6">
-                    {Array.from({ length: t.rating }).map((_, si) => <span key={si} className="text-orange-400 text-base">★</span>)}
-                    </div>
-                    <p className="text-white/70 text-sm leading-relaxed mb-8 italic">"{t.comment}"</p>
-                    <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 ${t.color} rounded-full flex items-center justify-center text-white text-xs font-black`}>{t.avatar}</div>
-                    <div>
-                        <div className="text-white font-bold text-sm">{t.name}</div>
-                        <div className="text-white/40 text-xs">{t.pet}</div>
-                    </div>
-                    </div>
-                </motion.div>
-                ))}
-            </div>
-            </div>
-        </section>
 
-        {/* ── CTA FINAL ── */}
         <section className="relative py-40 overflow-hidden bg-[#fdfbf7] text-center">
             {[...Array(6)].map((_, i) => (
             <motion.div key={i} className="absolute text-slate-200 select-none pointer-events-none"
@@ -577,7 +526,7 @@ export default function ConocenosClient() {
                 />
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.a href="https://wa.me/51910918802" onMouseEnter={hoverOn} onMouseLeave={hoverOff}
+                <motion.a href="https://wa.me/51952189680" onMouseEnter={hoverOn} onMouseLeave={hoverOff}
                     whileHover={{ scale: 1.05, y: -4 }} whileTap={{ scale: 0.97 }}
                     className="inline-flex items-center justify-center gap-3 px-12 py-5 bg-orange-500 text-white font-black rounded-full text-base uppercase tracking-wider shadow-2xl shadow-orange-500/30">
                     <span>🐶</span> Agendar visita por WhatsApp

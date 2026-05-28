@@ -3,6 +3,9 @@ import { SERVICES_DATA } from "./constants";
 import ServiciosClientView from "./components/ServiciosClientView";
 import BannerCarruselFondo from "@/components/BannerCarruselFondo";
 import WalkingPaws from "@/components/WalkingPaws";
+import { ScrollBar } from "@/components/inicio/shared";
+
+
 
 export const metadata: Metadata = {
   title: "Servicios | Mimos Pet Club",
@@ -25,18 +28,16 @@ export const metadata: Metadata = {
 
 export default function ServiciosPage() {
   return (
-    <main className="overflow-hidden bg-[#fdfbf7]">
 
-      {/* 🚀 BANNER CARRUSEL */}
+    <main className="overflow-hidden bg-[#fdfbf7]">
+      <ScrollBar />
+
       <BannerCarruselFondo />
 
-      {/* 📋 CARDS DE SERVICIOS */}
       <ServiciosClientView services={SERVICES_DATA} />
 
-      {/* 🌟 SECCIÓN FINAL CTA — fondo crema cálido, separado visualmente del footer */}
       <section className="relative py-32 overflow-hidden bg-[#fdfbf7] text-center">
 
-        {/* 🐾 LLUVIA DE PATITAS ANIMADAS (Con color dinámico y efecto Neón/Glow) */}
         <style>{`
           @keyframes pawFall {
             0%   { transform: translateY(-80px) rotate(0deg);  opacity: 0; }
@@ -52,8 +53,8 @@ export default function ServiciosPage() {
             user-select: none;
             
             /* 🎨 FILTRO DE COLOR Y BRILLO:
-               El primer drop-shadow define el color base (#38bdf8 = celeste sky-400).
-               El segundo drop-shadow añade el resplandor difuminado (#0284c7 = azul sky-600). */
+              El primer drop-shadow define el color base (#38bdf8 = celeste sky-400).
+              El segundo drop-shadow añade el resplandor difuminado (#0284c7 = azul sky-600). */
             filter: drop-shadow(0 0 0 #38bdf8) drop-shadow(0 0 4px #0284c7);
           }
         `}</style>
@@ -81,7 +82,6 @@ export default function ServiciosPage() {
                 animationDelay: p.delay,
               }}
             >
-              {/* SVG nativo para silueta perfecta controlada por Tailwind */}
               <svg 
                 viewBox="0 0 24 24" 
                 fill="currentColor" 
@@ -96,12 +96,11 @@ export default function ServiciosPage() {
 
         {/* Halo de luz azul centrado decorativo */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[500px] h-[500px] rounded-full bg-sky-400/10 blur-3xl" />
+          <div className="w-125 h-125 rounded-full bg-sky-400/10 blur-3xl" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6">
 
-          {/* Pill superior */}
           <span className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 text-sky-600 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-8">
             🐶 ¿Listo para reservar?
           </span>
@@ -117,7 +116,7 @@ export default function ServiciosPage() {
           </p>
 
           <a
-            href="https://wa.me/51900000000?text=Hola!%20Quisiera%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20Mimos%20Pet%20Club%20%F0%9F%90%BE"
+            href="https://wa.me/51952189680?text=Hola!%20Quisiera%20informaci%C3%B3n%20sobre%20los%20servicios%20de%20Mimos%20Pet%20Club%20%F0%9F%90%BE"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-12 py-5 bg-sky-500 hover:bg-sky-600 text-white font-black rounded-full shadow-xl shadow-sky-500/25 transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none"
@@ -127,7 +126,6 @@ export default function ServiciosPage() {
         </div>
       </section>
 
-      {/* 🐾 CAMINATA DE PATITAS */}
       <WalkingPaws />
     </main>
   );

@@ -10,7 +10,7 @@ export interface ServiceItem {
   gradient: string;
   waMessage: string;
   benefits: string[];
-  href?: string; // 👈 Propiedad opcional para redirigir a rutas internas como /tienda
+  href?: string; 
 }
 
 export const SERVICES_DATA: ServiceItem[] = [
@@ -24,7 +24,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     badge: "bg-amber-500/10 text-amber-600 border-amber-500/20",
     accent: "text-amber-500",
     gradient: "from-amber-500 to-orange-600",
-    waMessage: "¡Hola Mimos Pet Club! Me gustaría reservar el servicio de Hotel y Hospedaje para mi mascota. 🐾",
+    waMessage: "¡Hola Mimos Pet Club! Me gustaría reservar el servicio de Hotel y Hospedaje para mi mascota.",
     benefits: [
       "Suites individuales con control de temperatura",
       "Cámaras de seguridad y monitoreo las 24 horas",
@@ -42,7 +42,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     badge: "bg-sky-500/10 text-sky-600 border-sky-500/20",
     accent: "text-sky-500",
     gradient: "from-sky-500 to-blue-600",
-    waMessage: "¡Hola! Quisiera inscribir a mi perrito en el Colegio Canino de Mimos Pet Club. ¿Me dan info? 🎓",
+    waMessage: "¡Hola! Quisiera inscribir a mi perrito en el Colegio Canino de Mimos Pet Club. ¿Me dan info? ",
     benefits: [
       "Rutinas personalizadas de estimulación mental",
       "Entrenamiento enfocado en bienestar y obediencia",
@@ -60,7 +60,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     badge: "bg-purple-500/10 text-purple-600 border-purple-500/20",
     accent: "text-purple-500",
     gradient: "from-purple-500 to-indigo-600",
-    waMessage: "¡Hola! Deseo agendar una cita en el Spa y Peluquería Canina para dejar a mi engreído impecable. ✂️",
+    waMessage: "¡Hola! Deseo agendar una cita en el Spa y Peluquería Canina para dejar a mi engreído impecable.",
     benefits: [
       "Baños con agua temperada y masajes relajantes",
       "Cortes de raza y deslanado profesional",
@@ -74,12 +74,12 @@ export const SERVICES_DATA: ServiceItem[] = [
     tagline: "Moda, juguetes interactivos y estilo único",
     description: "Explora nuestro catálogo exclusivo de productos diseñados para mejorar el día a día de tu compañero. Desde arneses ergonómicos de alta resistencia hasta juguetes de estimulación cognitiva y snacks interactivos saludables.",
     emoji: "🛍️",
-    image: "https://m.media-amazon.com/images/I/81mYgpgslRL.jpg", // Imagen estética de una mascota con accesorios/juguetes
+    image: "https://m.media-amazon.com/images/I/81mYgpgslRL.jpg", 
     badge: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
     accent: "text-emerald-500",
     gradient: "from-emerald-500 to-teal-600",
-    href: "/tienda", // 👈 Apunta directo a tu página de tienda
-    waMessage: "", // Queda vacío ya que priorizaremos el link interno
+    href: "/tienda", 
+    waMessage: "", 
     benefits: [
       "Juguetes de estimulación mental e interactivos",
       "Collares y arneses ergonómicos garantizados",
