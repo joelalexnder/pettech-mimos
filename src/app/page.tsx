@@ -12,9 +12,9 @@ import BannerTraslado from "@/components/inicio/BannerTraslado ";
 
 const ServicesGrid = dynamic(() => import("@/components/inicio/ServicesGrid"));
 const Benefits = dynamic(() => import("@/components/inicio/Benefits"));
-const ProcessSteps = dynamic(() => import("@/components/inicio/ProcessSteps"));
 const Testimonials = dynamic(() => import("@/components/inicio/Testimonials"));
 const Faqs = dynamic(() => import("@/components/inicio/Faqs"));
+const Location = dynamic(() => import("@/components/inicio/Location"));
 const FinalCta = dynamic(() => import("@/components/inicio/FinalCta"));
 
 export const metadata: Metadata = {
@@ -43,9 +43,9 @@ export default function HomePage() {
 
       <ServicesGrid />
       <Benefits />
-      <ProcessSteps />
       <Testimonials />
       <Faqs />
+      <Location /> 
       <FinalCta />
     </main>
   );

@@ -58,7 +58,7 @@ export default function Faqs() {
                   <motion.span
                     animate={{ rotate: openFaq === i ? 45 : 0 }}
                     transition={{ duration: 0.25 }}
-                    className="text-orange-400 text-2xl font-light flex-shrink-0"
+                    className="text-orange-400 text-2xl font-light shrink-0"
                   >
                     +
                   </motion.span>
