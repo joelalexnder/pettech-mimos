@@ -35,7 +35,7 @@ export default function BannerCarruselFondo() {
   };
 
   return (
-    <section className="relative min-h-[85vh] w-full flex items-center overflow-hidden bg-slate-950">
+    <section className="relative min-h-[85vh] w-full flex items-center overflow-hidden bg-slate-700">
 
       <div className="absolute inset-0 z-0 w-full h-full">
         <Swiper
@@ -56,7 +56,7 @@ export default function BannerCarruselFondo() {
           ))}
         </Swiper>
 
-        <div className="absolute inset-0 bg-black/65 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/35 z-10 pointer-events-none" />
         <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-transparent z-10 pointer-events-none" />
       </div>
 

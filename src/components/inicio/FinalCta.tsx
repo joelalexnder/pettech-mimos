@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FadeUp, Reveal } from "./shared";
 
 export default function FinalCta() {
@@ -49,13 +50,12 @@ export default function FinalCta() {
             >
               📅 Agendar ahora por WhatsApp
             </a>
-            <a
-              href="https://wa.me/51910918802?text=Hola!%20Quisiera%20saber%20cómo%20llegar%20a%20Mimos%20Pet%20Club"
-              target="_blank" rel="noopener noreferrer"
+            <Link
+              href="/servicios"
               className="inline-flex items-center justify-center gap-2 px-10 py-5 border-2 border-slate-900 text-slate-900 font-black rounded-full text-base uppercase tracking-wider hover:scale-105 hover:-translate-y-1 active:scale-95 transition-all duration-200"
             >
-              📍 Ver ubicación
-            </a>
+              🐾 Ver servicios
+            </Link>
           </div>
         </FadeUp>
       </div>

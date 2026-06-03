@@ -94,7 +94,6 @@ export default function ServiciosPage() {
           ))}
         </div>
 
-        {/* Halo de luz azul centrado decorativo */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-125 h-125 rounded-full bg-sky-400/10 blur-3xl" />
         </div>

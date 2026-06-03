@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FadeUp, Reveal } from "./shared";
+import { FadeUp } from "./shared"; 
 
 export default function BannerTraslado() {
   return (
@@ -15,18 +15,19 @@ export default function BannerTraslado() {
           sizes="100vw"
           quality={70}
           className="object-cover object-center opacity-35"
+          priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/40 to-slate-950/20" />
+        <div className="absolute inset-0 bg-linear-to-r from-slate-950/60 via-slate-950/40 to-slate-950/20" />
       </div>
 
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-orange-400 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-orange-500 via-orange-400 to-transparent" />
 
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-orange-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-50 h-50 rounded-full bg-orange-500/5 blur-2xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <FadeUp>
+        <FadeUp>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
               <div className="inline-flex items-center gap-2 mb-6">
                 <span className="flex h-2 w-2 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75" />
@@ -36,24 +37,18 @@ export default function BannerTraslado() {
                   Oferta exclusiva · Solo clientes nuevos
                 </span>
               </div>
-            </FadeUp>
 
-            <Reveal>
               <h2 className="text-white font-black tracking-tighter leading-[0.9] text-[clamp(3rem,7vw,6rem)] mb-6">
                 Primera
                 <br />
                 <span className="text-orange-400">vez gratis</span>
               </h2>
-            </Reveal>
 
-            <FadeUp delay={0.1}>
               <p className="text-white/60 text-lg leading-relaxed max-w-md mb-8">
                 Recogemos a tu mascota, la mimamos y te la devolvemos
                 feliz y limpia. Sin importar si estás lejos o no puedes traerla.
               </p>
-            </FadeUp>
 
-            <FadeUp delay={0.15}>
               <div className="flex flex-wrap gap-3 mb-10">
                 {[
                   { icon: "🚗", text: "Recojo sin costo" },
@@ -69,9 +64,7 @@ export default function BannerTraslado() {
                   </div>
                 ))}
               </div>
-            </FadeUp>
 
-            <FadeUp delay={0.2}>
               <a
                 href="https://wa.me/51952189680?text=Hola!%20Soy%20cliente%20nuevo%20y%20quiero%20el%20traslado%20gratis%20%F0%9F%90%BE"
                 target="_blank"
@@ -84,61 +77,47 @@ export default function BannerTraslado() {
                 Reservar traslado gratis
                 <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
               </a>
-            </FadeUp>
-          </div>
+            </div>
 
-          <FadeUp delay={0.15} className="lg:justify-self-end w-full max-w-sm mx-auto lg:mx-0">
-            <div className="relative bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-8 overflow-hidden">
-
-              {/* Brillo decorativo */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-orange-500/20 blur-2xl pointer-events-none" />
-
-              <div className="relative">
-                {/* Número grande decorativo */}
-                <div className="text-[7rem] font-black leading-none text-white/5 select-none absolute -top-4 -right-2">
-                  1°
-                </div>
-
-                <div className="text-4xl mb-5">🐾</div>
-
-                <h3 className="text-white font-black text-xl mb-2">
-                  Tu primera cita incluye:
-                </h3>
-                <p className="text-white/40 text-sm mb-6">
-                  Sin letra chica. Sin sorpresas.
-                </p>
-
-                <ul className="space-y-3">
-                  {[
-                    "Recojo y devolución a domicilio",
-                    "Servicio completo de grooming",
-                    "Fotos y videos por WhatsApp",
-                    "Informe de salud básico",
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-white/70 text-sm">
-                      <span className="w-5 h-5 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 text-xs flex-shrink-0">
-                        ✓
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-7 pt-5 border-t border-white/10 flex items-center justify-between">
-                  <div>
-                    <p className="text-white/30 text-xs">Costo de traslado</p>
-                    <p className="text-white font-black text-lg line-through decoration-orange-400">S/ 15.00</p>
+            <div className="lg:justify-self-end w-full max-w-sm mx-auto lg:mx-0">
+              <div className="relative bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-8 overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-orange-500/20 blur-2xl pointer-events-none" />
+                <div className="relative">
+                  <div className="text-[7rem] font-black leading-none text-white/5 select-none absolute -top-4 -right-2">
+                    1°
                   </div>
-                  <div className="text-right">
-                    <p className="text-white/30 text-xs">Precio para ti hoy</p>
-                    <p className="text-orange-400 font-black text-2xl">GRATIS</p>
+                  <div className="text-4xl mb-5">🐾</div>
+                  <h3 className="text-white font-black text-xl mb-2">Tu primera cita incluye:</h3>
+                  <p className="text-white/40 text-sm mb-6">Sin letra chica. Sin surprises.</p>
+                  <ul className="space-y-3">
+                    {[
+                      "Recojo y devolución a domicilio",
+                      "Servicio completo de grooming",
+                      "Fotos y videos por WhatsApp",
+                      "Informe de salud básico",
+                    ].map((item) => (
+                      <li key={item} className="flex items-center gap-3 text-white/70 text-sm">
+                        <span className="w-5 h-5 rounded-full bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 text-xs shrink-0">✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-7 pt-5 border-t border-white/10 flex items-center justify-between">
+                    <div>
+                      <p className="text-white/30 text-xs">Costo de traslado</p>
+                      <p className="text-white font-black text-lg line-through decoration-orange-400">S/ 15.00</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-white/30 text-xs">Precio para ti hoy</p>
+                      <p className="text-orange-400 font-black text-2xl">GRATIS</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </FadeUp>
 
-        </div>
+          </div>
+        </FadeUp>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />

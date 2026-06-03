@@ -83,7 +83,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  const lightBackgroundRoutes = ["/conoce-a-tu-perro"]; 
+  const lightBackgroundRoutes = ["/conoce-a-tu-perro", "/probador-virtual"]; 
   const forceSolidBackground = lightBackgroundRoutes.includes(pathname);
 
   useEffect(() => {
@@ -120,7 +120,7 @@ export default function Navbar() {
           `}
         >
           <div className="max-w-360 mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-4 h-26">
 
             <Link
               href="/"
@@ -133,8 +133,8 @@ export default function Navbar() {
                 width={100}
                 height={36}
                 priority
-                className="h-25 w-auto object-contain group-hover:scale-105 transition-transform duration-200 drop-shadow-md"
-                style={{ width: "auto" }}
+                className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-200 drop-shadow-md"
+                style={{ width: "auto", height: "auto" }}
               />
             </Link>
 

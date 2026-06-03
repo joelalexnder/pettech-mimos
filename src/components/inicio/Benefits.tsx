@@ -94,8 +94,8 @@ export default function Benefits() {
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {beneficios.map((b, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <div className="relative bg-white/[0.03] border border-white/[0.08] backdrop-blur-md rounded-[2rem] p-8 lg:p-10 hover:-translate-y-2 hover:bg-white/[0.06] hover:border-orange-500/30 transition-all duration-500 group overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-transparent to-orange-500/0 group-hover:from-orange-500/10 transition-colors duration-500" />
+              <div className="relative bg-white/3 border border-white/8 backdrop-blur-md rounded-4xl p-8 lg:p-10 hover:-translate-y-2 hover:bg-white/6 hover:border-orange-500/30 transition-all duration-500 group overflow-hidden">
+                <div className="absolute inset-0 bg-linear-to-br from-orange-500/0 via-transparent to-orange-500/0 group-hover:from-orange-500/10 transition-colors duration-500" />
                 
                 <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start">
                   <div className="shrink-0 w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500 shadow-lg shadow-orange-500/0 group-hover:shadow-orange-500/20">
@@ -117,29 +117,35 @@ export default function Benefits() {
         </div>
 
         <FadeUp delay={0.4} className="mt-20">
-          <div className="relative rounded-[2rem] overflow-hidden border border-white/10 bg-white/[0.02] backdrop-blur-sm">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-transparent" />
+          <div className="relative rounded-4xl overflow-hidden border border-white/10 bg-slate-700/20 backdrop-blur-md">
+            
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-orange-500/20 rounded-full blur-[80px]" />
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-sky-500/10 rounded-full blur-[80px]" />
+
             <div className="relative flex flex-col md:flex-row items-center justify-between gap-8 px-10 py-10 lg:px-14">
               <div>
                 <Reveal>
-                  <p className="text-white text-2xl md:text-3xl font-black tracking-tight leading-tight">
+                  <h3 className="text-white text-2xl md:text-3xl font-black tracking-tight leading-tight">
                     El pet club favorito de Tacna
-                  </p>
+                  </h3>
                 </Reveal>
                 <FadeUp delay={0.1}>
-                  <p className="text-white/60 mt-3 text-base">
-                    Reconocidos por cientos de familias peruanas que confían en nosotros.
+                  <p className="text-white/60 mt-3 text-base max-w-lg">
+                    Reconocidos por cientos de familias peruanas que confían en nosotros para el cuidado de sus mascotas.
                   </p>
                 </FadeUp>
               </div>
+              
               <FadeUp delay={0.2} className="shrink-0">
                 <a
-                  href="https://wa.me/51952189680"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 text-white font-bold rounded-full text-base hover:bg-orange-600 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-orange-500/20"
+                  href="#ubicacion"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 bg-white text-slate-950 font-black rounded-full text-sm uppercase tracking-wider hover:bg-orange-500 hover:text-white hover:scale-105 active:scale-95 transition-all duration-300"
                 >
-                  Visítanos →
+                  Visítanos
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
                 </a>
               </FadeUp>
             </div>

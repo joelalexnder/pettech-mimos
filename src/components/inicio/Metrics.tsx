@@ -6,22 +6,23 @@ const metrics = [
   { value: 500,  suffix: "+", label: "Mascotas atendidas" },
   { value: 98,   suffix: "%", label: "Clientes satisfechos" },
   { value: 3,    suffix: "",  label: "Años de experiencia" },
-  { value: 24,   suffix: "/7",label: "Monitoreo en vivo" },
 ];
 
 export default function Metrics() {
   return (
-    <section className="relative z-30 mt-8 sm:mt-12">
-      <div className="max-w-360 mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="bg-white border border-slate-100 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-slate-100 overflow-hidden">
+    <section className="relative z-30 pt-16 pb-12 sm:pt-20 sm:pb-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200/80">
           {metrics.map((m, i) => (
-            <FadeUp key={i} delay={i * 0.08}
-              className="px-4 py-10 lg:py-12 text-center hover:bg-slate-50/80 transition-colors duration-300 group cursor-default flex flex-col justify-center"
+            <FadeUp 
+              key={i} 
+              delay={i * 0.1}
+              className="px-6 py-6 md:py-8 text-center group cursor-default flex flex-col justify-center"
             >
-              <div className="text-4xl lg:text-5xl font-black text-slate-900 mb-3 tabular-nums group-hover:text-orange-500 transition-colors duration-300">
+              <div className="text-[clamp(3rem,5vw,4.5rem)] font-black text-slate-900 mb-3 tabular-nums group-hover:text-orange-500 transition-colors duration-500 leading-none">
                 <Counter value={m.value} suffix={m.suffix} />
               </div>
-              <div className="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] group-hover:text-slate-600 transition-colors">
+              <div className="text-slate-400 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] group-hover:text-slate-500 transition-colors duration-500">
                 {m.label}
               </div>
             </FadeUp>
