@@ -108,7 +108,7 @@ export async function POST(req: Request) {
   },
 
  customer: {
-  id: uploadData.imageId,
+  url: uploadData.imageUrl,
 }
 };
 
