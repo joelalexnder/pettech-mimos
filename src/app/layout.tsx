@@ -3,41 +3,43 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import VetBotWidget from "@/components/features/VetBotWidget"; // 👈 NUEVO
 
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mimospetclub.com"), 
-  
+  metadataBase: new URL("https://mimospetclub.com"),
+
   title: {
     default: "Mimos Pet Club | Veterinaria, Hotel y Colegio Canino en Tacna",
-    template: "%s | Mimos Pet Club", 
+    template: "%s | Mimos Pet Club",
   },
-  
+
   description:
     "El cuidado premium que tu mascota merece en Tacna. Especialistas en veterinaria canina, estética (baño y corte), hotel, colegio canino, venta de productos de mantenimiento y tecnología IA.",
-  
+
   keywords: [
     "veterinaria canina Tacna",
-    "estética canina Tacna", 
-    "baño para perros", 
-    "corte de pelo mascotas", 
+    "estética canina Tacna",
+    "baño para perros",
+    "corte de pelo mascotas",
     "productos para perros",
-    "hotel canino", 
-    "colegio canino Tacna", 
-    "peluquería mascotas", 
-    "hospedaje perros Tacna", 
-    "Mimos Pet Club"
+    "hotel canino",
+    "colegio canino Tacna",
+    "peluquería mascotas",
+    "hospedaje perros Tacna",
+    "Mimos Pet Club",
   ],
 
   openGraph: {
     title: "Mimos Pet Club | Estética y Cuidado Premium",
-    description: "Baño, corte, hospedaje y colegio canino en Tacna. ¡Consiente a tu peludo con los mejores productos!",
+    description:
+      "Baño, corte, hospedaje y colegio canino en Tacna. ¡Consiente a tu peludo con los mejores productos!",
     url: "https://mimospetclub.com",
     siteName: "Mimos Pet Club",
     images: [
       {
-        url: "/mimos.webp", 
+        url: "/mimos.webp",
         width: 1200,
         height: 630,
         alt: "Instalaciones de Mimos Pet Club",
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  }
+  },
 };
 
 export default function RootLayout({
@@ -64,6 +66,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <VetBotWidget /> {/* 👈 NUEVO — va después del Footer */}
       </body>
     </html>
   );
