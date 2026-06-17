@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Carnet {
+  id            Int      @id @default(autoincrement())
+  carnetId      String   @unique
+  nombrePerro   String
+  raza          String?
+  edad          String?
+  propietario   String?
+  peso          String?
+  color         String?
+  sintomas      Json?
+  creadoEn      DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+
+  @@index([nombrePerro, propietario])
+}
+
+model Producto {
+  id            Int              @id @default(autoincrement())
+  nombre        String
+  descripcion   String
+  precio        Float
+  imagen        String?
+  stock         Int              @default(0)
+  disponible    Boolean          @default(true)
+  urgencia      UrgenciaProducto @default(media)
+  creadoEn      DateTime         @default(now())
+  actualizadoEn DateTime         @updatedAt
+  categoria     Categoria
+  reservaItems  ReservaItem[]
+
+  @@index([categoria])
+  @@index([disponible])
+}
+
+model Reserva {
+  id          Int           @id @default(autoincrement())
+  nombrePerro String?
+  propietario String?
+  estado      EstadoReserva @default(pendiente)
+  creadoEn    DateTime      @default(now())
+  items       ReservaItem[]
+}
+
+model ReservaItem {
+  id         Int      @id @default(autoincrement())
+  reservaId  Int
+  productoId Int
+  cantidad   Int      @default(1)
+  producto   Producto @relation(fields: [productoId], references: [id])
+  reserva    Reserva  @relation(fields: [reservaId], references: [id])
+}
+
+enum Categoria {
+  medicamento
+  alimento
+  accesorio
+  ropa
+}
+
+enum UrgenciaProducto {
+  alta
+  media
+  baja
+}
+
+enum EstadoReserva {
+  pendiente
+  confirmada
+  cancelada
+}
