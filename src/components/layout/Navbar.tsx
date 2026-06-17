@@ -11,10 +11,10 @@ interface Social { id: string; href: string; path: string; label: string }
 const NAV_LINKS: NavLink[] = [
   { label: "Inicio", href: "/" },
   { label: "Servicios", href: "/servicios" },
-  { label: "Tienda & IA", href: "/tienda" },
-  { label: "Nosotros", href: "/conocenos" },
+  { label: "Tienda", href: "/tienda" },
   { label: "Conoce a tu Mascota", href: "/conoce-a-tu-perro" },
   { label: "Probador Virtual", href: "/probador-virtual" },
+  { label: "Nosotros", href: "/conocenos" },
 ];
 
 const SOCIALS: Social[] = [

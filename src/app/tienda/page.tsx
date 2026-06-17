@@ -3,7 +3,6 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 
-// ── Tipos ──────────────────────────────────────────────────────────────────────
 
 interface Producto {
   id: number;
@@ -15,8 +14,6 @@ interface Producto {
   stock: number;
   urgencia: "alta" | "media" | "baja";
 }
-
-// ── Config ─────────────────────────────────────────────────────────────────────
 
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "51999999999";
 
@@ -44,7 +41,6 @@ function buildWhatsappUrl(items: Producto[]): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
 
-// ── Magnetic Button ────────────────────────────────────────────────────────────
 
 function MagneticBtn({
   children, onClick, className, style,
@@ -83,7 +79,6 @@ function MagneticBtn({
   );
 }
 
-// ── Animated Number ────────────────────────────────────────────────────────────
 
 function AnimatedNumber({ value }: { value: number }) {
   const spring  = useSpring(value, { stiffness: 100, damping: 20 });
@@ -95,7 +90,6 @@ function AnimatedNumber({ value }: { value: number }) {
   return <>{display}</>;
 }
 
-// ── Product Card ───────────────────────────────────────────────────────────────
 
 function ProductCard({
   producto, inCart, onToggle,
@@ -133,7 +127,6 @@ function ProductCard({
           outlineOffset: inCart ? "2px" : "0",
         }}
       >
-        {/* Stock bajo */}
         {producto.stock <= 5 && (
           <div className="absolute top-4 left-4 z-10">
             <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase text-white"
@@ -143,7 +136,6 @@ function ProductCard({
           </div>
         )}
 
-        {/* Check cuando está en carrito */}
         <AnimatePresence>
           {inCart && (
             <motion.div
@@ -164,7 +156,6 @@ function ProductCard({
           )}
         </AnimatePresence>
 
-        {/* Imagen */}
         <div className="relative h-52 overflow-hidden" style={{ background: "#f0ece6" }}>
           {producto.imagen && !imgError ? (
             <motion.img
@@ -191,9 +182,7 @@ function ProductCard({
             style={{ background: "linear-gradient(to top, rgba(250,248,245,0.7) 0%, transparent 40%)" }} />
         </div>
 
-        {/* Contenido */}
         <div className="p-5">
-          {/* Urgencia */}
           <div className="flex items-center justify-between mb-3">
             <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase"
               style={{ color: urg.color, background: urg.bg }}>
@@ -205,18 +194,15 @@ function ProductCard({
             </span>
           </div>
 
-          {/* Nombre */}
           <h3 className="font-bold leading-snug mb-2 line-clamp-2"
             style={{ fontFamily: "'Playfair Display', serif", fontSize: "15px", color: "#1a1a1a" }}>
             {producto.nombre}
           </h3>
 
-          {/* Descripción */}
           <p className="text-[11px] leading-relaxed line-clamp-2 mb-5" style={{ color: "#888" }}>
             {producto.descripcion}
           </p>
 
-          {/* Precio + botón */}
           <div className="flex items-center justify-between">
             <div>
               <p className="text-[10px] uppercase tracking-widest mb-0.5" style={{ color: "#bbb" }}>Precio</p>
@@ -257,7 +243,6 @@ function ProductCard({
   );
 }
 
-// ── Cart Drawer ────────────────────────────────────────────────────────────────
 
 function CartDrawer({
   items, onRemove, onClear, onCheckout, isOpen, onClose,
@@ -287,7 +272,6 @@ function CartDrawer({
             className="fixed right-0 top-0 h-full w-full max-w-sm z-50 flex flex-col"
             style={{ background: "#faf8f5", fontFamily: "'DM Sans', sans-serif" }}
           >
-            {/* Header */}
             <div className="flex items-center justify-between p-6 border-b" style={{ borderColor: "#ede8e1" }}>
               <div>
                 <h2 className="font-black text-xl" style={{ fontFamily: "'Playfair Display', serif", color: "#1a1a1a" }}>
@@ -304,7 +288,6 @@ function CartDrawer({
               </button>
             </div>
 
-            {/* Items */}
             <div className="flex-1 overflow-y-auto p-6 space-y-3">
               {items.length === 0 ? (
                 <div className="text-center py-20">
@@ -327,7 +310,6 @@ function CartDrawer({
                       <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 flex items-center justify-center"
                         style={{ background: "#f0ece6" }}>
                         {item.imagen ? (
-                          // eslint-disable-next-line @next/next/no-img-element
                           <img src={item.imagen} alt={item.nombre} className="w-full h-full object-cover" />
                         ) : (
                           <span className="text-2xl">
@@ -354,7 +336,6 @@ function CartDrawer({
               )}
             </div>
 
-            {/* Footer */}
             {items.length > 0 && (
               <div className="p-6 border-t space-y-4" style={{ borderColor: "#ede8e1" }}>
                 <div className="flex justify-between items-end">
@@ -387,7 +368,6 @@ function CartDrawer({
   );
 }
 
-// ── Página principal ───────────────────────────────────────────────────────────
 
 export default function TiendaPage() {
   const [productos, setProductos]           = useState<Producto[]>([]);
@@ -405,7 +385,6 @@ export default function TiendaPage() {
   const heroY       = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  // Cargar productos
   useEffect(() => {
     const cargar = async () => {
       setCargando(true); setError("");
@@ -423,7 +402,6 @@ export default function TiendaPage() {
     cargar();
   }, []);
 
-  // Filtros + orden
   const productosFiltrados = useMemo(() => {
     let lista = [...productos];
     if (filtroCategoria !== "todos") lista = lista.filter(p => p.categoria === filtroCategoria);
@@ -441,7 +419,6 @@ export default function TiendaPage() {
     return lista;
   }, [productos, filtroCategoria, busqueda, orden]);
 
-  // Carrito
   const toggleCarrito = (id: number) => {
     setCarrito(prev => {
       const next = new Set(prev);
@@ -470,7 +447,6 @@ export default function TiendaPage() {
     return c;
   }, [productos]);
 
-  // ── RENDER ─────────────────────────────────────────────────────────────────
 
   return (
     <>
@@ -485,19 +461,14 @@ export default function TiendaPage() {
 
       <div className="min-h-screen" style={{ background: "#f7f4ef", fontFamily: "'DM Sans', sans-serif" }}>
 
-        {/* ── HERO ── */}
         <section ref={heroRef} className="relative h-[560px] overflow-hidden flex items-center">
 
-          {/* Fondo con imagen de perrito + parallax */}
           <motion.div style={{ y: heroY }} className="absolute inset-0">
-            {/* Imagen elegante de perrito */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1800&q=90&fit=crop&crop=center"
               alt="perro elegante"
               className="w-full h-full object-cover object-center"
             />
-            {/* Overlay oscuro degradado */}
             <div
               className="absolute inset-0"
               style={{
@@ -507,7 +478,6 @@ export default function TiendaPage() {
             />
           </motion.div>
 
-          {/* Contenido hero */}
           <motion.div
             style={{ opacity: heroOpacity }}
             className="relative z-10 max-w-7xl mx-auto px-6 w-full"
@@ -517,7 +487,6 @@ export default function TiendaPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
             >
-              {/* Label */}
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-px w-12" style={{ background: "#c45c2a" }} />
                 <span className="text-[11px] font-bold tracking-[0.3em] uppercase" style={{ color: "#c45c2a" }}>
@@ -525,7 +494,6 @@ export default function TiendaPage() {
                 </span>
               </div>
 
-              {/* Título */}
               <h1
                 className="font-black text-white leading-none mb-6"
                 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(52px, 7vw, 80px)" }}
@@ -541,14 +509,12 @@ export default function TiendaPage() {
             </motion.div>
           </motion.div>
 
-          {/* Fade inferior */}
           <div
             className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
             style={{ background: "linear-gradient(to bottom, transparent, #564d3f)" }}
           />
         </section>
 
-        {/* ── STICKY TOOLBAR ── */}
         <div
           className="sticky top-0 z-30 border-b"
           style={{
@@ -559,8 +525,6 @@ export default function TiendaPage() {
         >
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
-
-              {/* Categorías — más grandes */}
               <div className="flex gap-2 flex-wrap">
                 {CATEGORIAS.map(cat => {
                   const active = filtroCategoria === cat.key;
@@ -598,9 +562,7 @@ export default function TiendaPage() {
                 })}
               </div>
 
-              {/* Derecha: búsqueda + orden + carrito */}
               <div className="flex items-center gap-2">
-                {/* Búsqueda */}
                 <div className="relative">
                   <input
                     type="text"
@@ -625,7 +587,6 @@ export default function TiendaPage() {
                   )}
                 </div>
 
-                {/* Orden */}
                 <select
                   value={orden}
                   onChange={e => setOrden(e.target.value)}
@@ -638,7 +599,6 @@ export default function TiendaPage() {
                   <option value="nombre">A → Z</option>
                 </select>
 
-                {/* Botón carrito */}
                 <MagneticBtn
                   onClick={() => setCarritoOpen(true)}
                   className="relative flex items-center gap-2 rounded-xl font-bold transition-all"
@@ -664,10 +624,7 @@ export default function TiendaPage() {
           </div>
         </div>
 
-        {/* ── MAIN ── */}
         <main className="max-w-7xl mx-auto px-6 py-10">
-
-          {/* Loading */}
           {cargando && (
             <div className="py-32 flex flex-col items-center gap-6">
               <div className="flex gap-2">
@@ -684,7 +641,6 @@ export default function TiendaPage() {
             </div>
           )}
 
-          {/* Error */}
           {!cargando && error && (
             <div className="py-24 text-center">
               <p className="text-5xl mb-4">😔</p>
@@ -696,7 +652,6 @@ export default function TiendaPage() {
             </div>
           )}
 
-          {/* Sin resultados */}
           {!cargando && !error && productosFiltrados.length === 0 && (
             <div className="py-24 text-center">
               <p className="text-5xl mb-4">🔍</p>
@@ -710,10 +665,8 @@ export default function TiendaPage() {
             </div>
           )}
 
-          {/* Grid */}
           {!cargando && !error && productosFiltrados.length > 0 && (
             <>
-              {/* Info bar */}
               <div className="flex items-center justify-between mb-8">
                 <p className="text-sm" style={{ color: "#999" }}>
                   <span className="font-bold" style={{ color: "#1a1a1a" }}>
@@ -759,7 +712,6 @@ export default function TiendaPage() {
           )}
         </main>
 
-        {/* ── FLOATING BAR ── */}
         <AnimatePresence>
           {carrito.size > 0 && !carritoOpen && (
             <motion.div
@@ -785,7 +737,6 @@ export default function TiendaPage() {
           )}
         </AnimatePresence>
 
-        {/* ── TOAST ÉXITO ── */}
         <AnimatePresence>
           {enviado && (
             <motion.div
@@ -800,7 +751,6 @@ export default function TiendaPage() {
           )}
         </AnimatePresence>
 
-        {/* ── CART DRAWER ── */}
         <CartDrawer
           items={itemsCarrito}
           onRemove={id => toggleCarrito(id)}

@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ── Tipos ──────────────────────────────────────────────────────────────────────
 
 interface Producto {
   id: number;
@@ -21,8 +20,6 @@ interface SeccionProductosProps {
   propietario?: string;
   categoriasRelevantes?: ("medicamento" | "alimento" | "accesorio")[];
 }
-
-// ── Constantes ─────────────────────────────────────────────────────────────────
 
 const CATEGORIA_LABELS: Record<string, string> = {
   medicamento: "💊 Medicamentos",
@@ -48,7 +45,6 @@ const URGENCIA_BADGE: Record<string, { label: string; color: string }> = {
   baja:  { label: "Opcional",    color: "bg-white/5 text-white/40 border-white/10" },
 };
 
-// ── Componente ─────────────────────────────────────────────────────────────────
 
 export default function SeccionProductos({
   nombrePerro,
@@ -58,15 +54,12 @@ export default function SeccionProductos({
   const [productos, setProductos] = useState<Producto[]>([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
-  // FIX: inicializar correctamente como Set<number>
   const [seleccionados, setSeleccionados] = useState<Set<number>>(new Set<number>());
   const [reservando, setReservando] = useState(false);
   const [reservaHecha, setReservaHecha] = useState(false);
   const [filtroCategoria, setFiltroCategoria] = useState<string>("todos");
   const [expandido, setExpandido] = useState(false);
   const [imgErrors, setImgErrors] = useState<Set<number>>(new Set<number>());
-
-  // ── Cargar productos ───────────────────────────────────────────────────────
 
   const cargarProductos = useCallback(async () => {
     setCargando(true);
@@ -89,8 +82,6 @@ export default function SeccionProductos({
     }
   }, [expandido, productos.length, error, cargarProductos]);
 
-  // ── Selección (máx 2) ──────────────────────────────────────────────────────
-
   const toggleSeleccion = (id: number) => {
     setSeleccionados(prev => {
       const next = new Set(prev);
@@ -104,10 +95,8 @@ export default function SeccionProductos({
     });
   };
 
-  // FIX: limpiar usando new Set() correctamente
   const limpiarSeleccion = () => setSeleccionados(new Set<number>());
 
-  // ── Reservar ───────────────────────────────────────────────────────────────
 
   const handleReservar = async () => {
     if (seleccionados.size === 0 || reservando) return;
@@ -134,8 +123,6 @@ export default function SeccionProductos({
     }
   };
 
-  // ── Filtrado y orden ───────────────────────────────────────────────────────
-
   const productosFiltrados = productos
     .filter(p => filtroCategoria === "todos" || p.categoria === filtroCategoria)
     .sort((a, b) => {
@@ -147,18 +134,15 @@ export default function SeccionProductos({
 
   const categorias = ["todos", ...Array.from(new Set(productos.map(p => p.categoria)))];
 
-  // FIX: calcular total correctamente desde Set usando Array.from
   const productosSeleccionados = Array.from(seleccionados)
     .map(id => productos.find(p => p.id === id))
     .filter(Boolean) as Producto[];
 
   const totalEstimado = productosSeleccionados.reduce((sum, p) => sum + p.precio, 0);
 
-  // ── Render ─────────────────────────────────────────────────────────────────
 
   return (
     <div className="mt-6">
-      {/* Botón expandir */}
       <motion.button
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.99 }}
@@ -185,7 +169,6 @@ export default function SeccionProductos({
         </motion.span>
       </motion.button>
 
-      {/* Panel expandible */}
       <AnimatePresence>
         {expandido && (
           <motion.div
@@ -197,7 +180,6 @@ export default function SeccionProductos({
           >
             <div className="pt-4 space-y-4">
 
-              {/* Filtros */}
               <div className="flex items-center justify-between gap-3 flex-wrap">
                 <p className="text-xs text-white/40">
                   {cargando
@@ -221,7 +203,6 @@ export default function SeccionProductos({
                 </div>
               </div>
 
-              {/* Loading */}
               {cargando && (
                 <div className="py-10 text-center">
                   <div className="flex justify-center gap-1.5">
@@ -238,7 +219,6 @@ export default function SeccionProductos({
                 </div>
               )}
 
-              {/* Error */}
               {!cargando && error && (
                 <div className="py-6 text-center">
                   <p className="text-sm text-red-400">{error}</p>
@@ -251,7 +231,6 @@ export default function SeccionProductos({
                 </div>
               )}
 
-              {/* Sin resultados */}
               {!cargando && !error && productosFiltrados.length === 0 && (
                 <div className="py-8 text-center">
                   <p className="text-sm text-white/30">
@@ -260,10 +239,8 @@ export default function SeccionProductos({
                 </div>
               )}
 
-              {/* Productos */}
               {!cargando && !error && productosFiltrados.length > 0 && (
                 <>
-                  {/* Indicador selección */}
                   <AnimatePresence>
                     {seleccionados.size > 0 && (
                       <motion.div
@@ -288,7 +265,6 @@ export default function SeccionProductos({
                     )}
                   </AnimatePresence>
 
-                  {/* Grid */}
                   <div className="grid grid-cols-1 gap-3">
                     {productosFiltrados.map(producto => {
                       const isSelected = seleccionados.has(producto.id);
@@ -312,7 +288,6 @@ export default function SeccionProductos({
                               : `${URGENCIA_COLORS[producto.urgencia]} hover:border-white/25`
                           }`}
                         >
-                          {/* Badge IA */}
                           {esRelevante && !isSelected && (
                             <div className="absolute -top-2 right-3 z-10">
                               <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-[9px] text-emerald-300 font-medium">
@@ -322,10 +297,8 @@ export default function SeccionProductos({
                           )}
 
                           <div className="flex gap-4 items-start">
-                            {/* Imagen con fallback */}
                             <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center shrink-0 overflow-hidden">
                               {producto.imagen && !imgError ? (
-                                // eslint-disable-next-line @next/next/no-img-element
                                 <img
                                   src={producto.imagen}
                                   alt={producto.nombre}
@@ -341,7 +314,6 @@ export default function SeccionProductos({
                               )}
                             </div>
 
-                            {/* Info */}
                             <div className="flex-1 min-w-0">
                               <div className="flex items-start justify-between gap-2 mb-1">
                                 <h4 className={`text-sm font-semibold leading-tight ${
@@ -349,7 +321,6 @@ export default function SeccionProductos({
                                 }`}>
                                   {producto.nombre}
                                 </h4>
-                                {/* Checkbox */}
                                 <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition-all ${
                                   isSelected
                                     ? "bg-emerald-500 border-emerald-500"
@@ -383,7 +354,6 @@ export default function SeccionProductos({
                     })}
                   </div>
 
-                  {/* Panel reserva */}
                   <AnimatePresence>
                     {seleccionados.size > 0 && !reservaHecha && (
                       <motion.div
@@ -392,7 +362,6 @@ export default function SeccionProductos({
                         exit={{ opacity: 0, y: 10 }}
                         className="pt-2 space-y-3"
                       >
-                        {/* Resumen — FIX: usar Array.from(seleccionados) */}
                         <div className="p-3 rounded-xl bg-white/3 border border-white/8">
                           <p className="text-[10px] text-white/30 uppercase tracking-wider mb-2">
                             Tu selección
@@ -420,7 +389,6 @@ export default function SeccionProductos({
                           </div>
                         </div>
 
-                        {/* Botón WhatsApp */}
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
@@ -454,7 +422,6 @@ export default function SeccionProductos({
                     )}
                   </AnimatePresence>
 
-                  {/* Confirmación */}
                   <AnimatePresence>
                     {reservaHecha && (
                       <motion.div

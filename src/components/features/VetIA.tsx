@@ -6,7 +6,6 @@ import { animate, stagger } from "animejs";
 import SeccionProductos from "@/components/features/SeccionProductos";
 import PawParticles from "@/components/ui/PawParticles";
 
-// ── Tipos ──────────────────────────────────────────────────────────────────────
 type Mode = "selector" | "chat" | "form";
 type Step = "nombre" | "edad" | "sintomas" | "duracion" | "consultando" | "resultado";
 
@@ -37,7 +36,6 @@ const FORM_DATA_INITIAL: FormData = {
 const inputClass =
   "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-emerald-500/40 focus:bg-white/8 transition-all";
 
-// ── Subcomponentes ─────────────────────────────────────────────────────────────
 function FormStep({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
   return (
     <motion.div
@@ -65,7 +63,7 @@ function NextButton({ onClick, disabled = false, label = "Siguiente →", primar
       disabled={disabled}
       className={`w-full py-3 rounded-xl text-sm font-medium transition-all disabled:opacity-30 disabled:cursor-not-allowed ${
         primary
-          ? "bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white"
+          ? "bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white"
           : "border border-white/15 bg-white/5 hover:bg-white/10 text-white"
       }`}
     >
@@ -74,7 +72,6 @@ function NextButton({ onClick, disabled = false, label = "Siguiente →", primar
   );
 }
 
-// ── COMPONENTE PRINCIPAL ───────────────────────────────────────────────────────
 export default function VetIA() {
   const [mode, setMode] = useState<Mode>("selector");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -88,13 +85,11 @@ export default function VetIA() {
   const [resultadoForm, setResultadoForm] = useState("");
 
 
-  // ── Refs Anime.js ──────────────────────────────────────────────────────────
   const badgeRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const warningRef = useRef<HTMLDivElement>(null);
 
-  // ── Anime.js: hero ─────────────────────────────────────────────────────────
   useEffect(() => {
     if (mode !== "selector") return;
 
@@ -136,7 +131,6 @@ export default function VetIA() {
     return () => clearTimeout(timeout);
   }, [mode]);
 
-  // ── Anime.js: form steps ───────────────────────────────────────────────────
   useEffect(() => {
     if (mode !== "form") return;
     const timeout = setTimeout(() => {
@@ -155,7 +149,6 @@ export default function VetIA() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-  // ── Helpers ────────────────────────────────────────────────────────────────
   const resetForm = () => {
     setStep("nombre");
     setFormData(FORM_DATA_INITIAL);
@@ -173,7 +166,6 @@ export default function VetIA() {
       .join("");
   };
 
-  // ── Chat ───────────────────────────────────────────────────────────────────
   const iniciarChat = async () => {
     setMode("chat");
     const bienvenida: Message = {
@@ -208,7 +200,6 @@ export default function VetIA() {
     }
   };
 
-  // ── Formulario ─────────────────────────────────────────────────────────────
   const toggleSintoma = (s: string) => {
     setFormData(prev => ({
       ...prev,
@@ -240,16 +231,13 @@ export default function VetIA() {
   const STEPS_LABELS = ["Datos", "Edad", "Síntomas", "Duración"];
   const currentStepIndex = STEPS_LIST.indexOf(step);
 
-  // ── RENDER ─────────────────────────────────────────────────────────────────
   return (
     <>
       <PawParticles />
 
       <section className="relative min-h-screen text-white font-sans overflow-hidden">
 
-        {/* ── FONDO: veterinario con perro ── */}
         <div className="fixed inset-0 z-0">
-          {/* Foto libre de derechos: veterinario examinando perro - Karsten Winegeart / Unsplash */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
@@ -257,16 +245,14 @@ export default function VetIA() {
               filter: "brightness(0.22) saturate(0.8)",
             }}
           />
-          {/* Gradiente oscuro encima */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-[#0a0e1a]/98" />
-          {/* Tinte verde esmeralda sutil */}
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/30 via-transparent to-teal-950/20" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/75 via-black/50 to-[#0a0e1a]/98" />
+          <div className="absolute inset-0 bg-linear-to-br from-emerald-950/30 via-transparent to-teal-950/20" />
         </div>
 
         {/* Header */}
         <header className="relative z-10 border-b border-white/5 px-6 py-4 flex items-center justify-between backdrop-blur-sm">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-base">
+            <div className="w-8 h-8 rounded-lg bg-linear-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-base">
               🐾
             </div>
             <div>
@@ -289,7 +275,6 @@ export default function VetIA() {
         <div className="relative z-10 max-w-2xl mx-auto px-4 py-8">
           <AnimatePresence mode="wait">
 
-            {/* ── SELECTOR ── */}
             {mode === "selector" && (
               <motion.div key="selector" exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
 
@@ -310,7 +295,7 @@ export default function VetIA() {
                   >
                     Consulta
                     <br />
-                    <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                    <span className="bg-linear-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
                       Veterinaria
                     </span>
                     <br />
@@ -333,7 +318,6 @@ export default function VetIA() {
                   </p>
                 </div>
 
-                {/* Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <motion.button
                     whileHover={{ scale: 1.03 }}
@@ -342,7 +326,7 @@ export default function VetIA() {
                     className="vet-card group relative p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md text-left"
                     style={{ opacity: 0 }}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400/20 to-teal-400/20 border border-emerald-500/30 flex items-center justify-center text-xl mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-linear-to-br from-emerald-400/20 to-teal-400/20 border border-emerald-500/30 flex items-center justify-center text-xl mb-4">
                       💬
                     </div>
                     <h3 className="font-semibold text-base mb-1">Chat libre</h3>
@@ -361,7 +345,7 @@ export default function VetIA() {
                     className="vet-card group relative p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md text-left"
                     style={{ opacity: 0 }}
                   >
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400/20 to-cyan-400/20 border border-teal-500/30 flex items-center justify-center text-xl mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-linear-to-br from-teal-400/20 to-cyan-400/20 border border-teal-500/30 flex items-center justify-center text-xl mb-4">
                       📋
                     </div>
                     <h3 className="font-semibold text-base mb-1">Formulario guiado</h3>
@@ -389,7 +373,6 @@ export default function VetIA() {
               </motion.div>
             )}
 
-            {/* ── CHAT ── */}
             {mode === "chat" && (
               <motion.div
                 key="chat"
@@ -409,7 +392,7 @@ export default function VetIA() {
                       className={`flex gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}
                     >
                       {msg.role === "ai" && (
-                        <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-sm shrink-0 mt-0.5">
+                        <div className="w-7 h-7 rounded-lg bg-linear-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-sm shrink-0 mt-0.5">
                           🐾
                         </div>
                       )}
@@ -428,7 +411,7 @@ export default function VetIA() {
 
                   {loading && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-3">
-                      <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-sm shrink-0">🐾</div>
+                      <div className="w-7 h-7 rounded-lg bg-linear-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-sm shrink-0">🐾</div>
                       <div className="px-4 py-3 rounded-2xl rounded-tl-sm bg-white/5 border border-white/8 backdrop-blur-sm">
                         <div className="flex gap-1.5 items-center h-5">
                           {[0, 0.15, 0.3].map((delay, i) => (
@@ -462,7 +445,6 @@ export default function VetIA() {
               </motion.div>
             )}
 
-            {/* ── FORMULARIO ── */}
             {mode === "form" && (
               <motion.div key="form" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
 
@@ -582,7 +564,7 @@ export default function VetIA() {
 
                   {step === "consultando" && (
                     <motion.div key="consultando" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400/20 to-teal-400/20 border border-emerald-500/30 flex items-center justify-center text-3xl mx-auto mb-6">
+                      <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-emerald-400/20 to-teal-400/20 border border-emerald-500/30 flex items-center justify-center text-3xl mx-auto mb-6">
                         <motion.span animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>🐾</motion.span>
                       </div>
                       <h3 className="text-lg font-semibold mb-2">Analizando los síntomas...</h3>
@@ -600,7 +582,7 @@ export default function VetIA() {
                   {step === "resultado" && (
                     <motion.div key="resultado" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-xl shrink-0">🐾</div>
+                        <div className="w-10 h-10 rounded-xl bg-linear-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-xl shrink-0">🐾</div>
                         <div>
                           <h3 className="font-semibold">Análisis de VetBot</h3>
                           <p className="text-white/40 text-xs">Para {formData.nombre || "tu perro"} • {formData.edad}</p>
@@ -618,7 +600,7 @@ export default function VetIA() {
                       <motion.button
                         whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                   
-                        className="w-full py-4 rounded-2xl border border-teal-500/30 bg-gradient-to-r from-teal-500/10 to-emerald-500/10 hover:from-teal-500/20 hover:to-emerald-500/20 backdrop-blur-sm transition-all flex items-center justify-center gap-3 group"
+                        className="w-full py-4 rounded-2xl border border-teal-500/30 bg-linear-to-r from-teal-500/10 to-emerald-500/10 hover:from-teal-500/20 hover:to-emerald-500/20 backdrop-blur-sm transition-all flex items-center justify-center gap-3 group"
                       >
                         <span className="text-xl">🪪</span>
                         <div className="text-left">
@@ -646,7 +628,6 @@ export default function VetIA() {
                 </AnimatePresence>
               </motion.div>
             )}
-
           </AnimatePresence>
         </div>
       </section>

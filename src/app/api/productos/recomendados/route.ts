@@ -25,7 +25,6 @@ export async function GET(req: NextRequest) {
       take: limit * 3,
     });
 
-    // Re-ordenar en JS: accesorios + alta urgencia primero
     const urgOrder: Record<string, number> = { alta: 0, media: 1, baja: 2 };
     const catOrder: Record<string, number> = { accesorio: 0, alimento: 1, medicamento: 2 };
 
@@ -43,7 +42,6 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ productos: ordenados });
 
   } catch (error: unknown) {
-    // Log detallado para diagnosticar
     const msg = error instanceof Error ? error.message : String(error);
     console.error("[recomendados] Error Prisma:", msg);
     return NextResponse.json(

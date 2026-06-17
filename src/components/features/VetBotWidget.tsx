@@ -3,13 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ── Tipos ──────────────────────────────────────────────────────────────────────
 interface Message {
   role: "user" | "ai";
   text: string;
 }
 
-// ── Helpers ────────────────────────────────────────────────────────────────────
 const formatAIText = (text: string) => {
   return text
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
@@ -28,7 +26,6 @@ const QUICK_REPLIES = [
   "Está muy decaído",
 ];
 
-// ── COMPONENTE PRINCIPAL ───────────────────────────────────────────────────────
 export default function VetBotWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -42,12 +39,10 @@ export default function VetBotWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Scroll al último mensaje
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-  // Focus al input cuando se abre
   useEffect(() => {
     if (open) {
       setTimeout(() => inputRef.current?.focus(), 300);
@@ -55,7 +50,6 @@ export default function VetBotWidget() {
     }
   }, [open]);
 
-  // ── Iniciar chat con mensaje de bienvenida ─────────────────────────────────
   const iniciarChat = () => {
     if (started) return;
     setStarted(true);
@@ -72,7 +66,6 @@ export default function VetBotWidget() {
     if (!started) iniciarChat();
   };
 
-  // ── Enviar mensaje ─────────────────────────────────────────────────────────
   const enviarMensaje = async (texto?: string) => {
     const msgTexto = texto || input;
     if (!msgTexto.trim() || loading) return;
@@ -126,10 +119,8 @@ export default function VetBotWidget() {
     iniciarChat();
   };
 
-  // ── RENDER ─────────────────────────────────────────────────────────────────
   return (
-    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3">
-      {/* ── Ventana del chat ── */}
+    <div className="fixed bottom-6 right-6 z-9999 flex flex-col items-end gap-3">
       <AnimatePresence>
         {open && (
           <motion.div
@@ -145,12 +136,11 @@ export default function VetBotWidget() {
               maxHeight: "min(600px, calc(100vh - 120px))",
             }}
           >
-            {/* Header */}
             <div
               className="flex items-center gap-3 px-4 py-3 border-b border-white/7 shrink-0"
               style={{ background: "rgba(15, 20, 35, 0.95)" }}
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-lg shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-linear-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-lg shrink-0">
                 🐾
               </div>
               <div className="flex-1 min-w-0">
@@ -168,7 +158,6 @@ export default function VetBotWidget() {
                 </div>
               </div>
 
-              {/* Botones header */}
               <div className="flex items-center gap-1">
                 <button
                   onClick={resetChat}
@@ -186,7 +175,6 @@ export default function VetBotWidget() {
               </div>
             </div>
 
-            {/* Mensajes */}
             <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-0">
               <AnimatePresence initial={false}>
                 {messages.map((msg, i) => (
@@ -226,7 +214,6 @@ export default function VetBotWidget() {
                 ))}
               </AnimatePresence>
 
-              {/* Typing indicator */}
               {loading && (
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
@@ -261,7 +248,6 @@ export default function VetBotWidget() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Quick replies — solo al inicio */}
             {messages.length === 1 && !loading && (
               <div className="px-3 pb-2 flex gap-1.5 overflow-x-auto scrollbar-hide shrink-0">
                 {QUICK_REPLIES.map((qr) => (
@@ -276,7 +262,6 @@ export default function VetBotWidget() {
               </div>
             )}
 
-            {/* Input */}
             <div
               className="px-3 py-3 border-t border-white/7 flex gap-2 items-center shrink-0"
               style={{ background: "rgba(8, 11, 20, 0.9)" }}
@@ -312,7 +297,6 @@ export default function VetBotWidget() {
               </button>
             </div>
 
-            {/* Disclaimer */}
             <div className="px-4 py-2 border-t border-white/5 shrink-0">
               <p className="text-[10px] text-white/20 text-center leading-relaxed">
                 ⚠️ Solo perros · No reemplaza consulta presencial
@@ -322,7 +306,6 @@ export default function VetBotWidget() {
         )}
       </AnimatePresence>
 
-      {/* ── Tooltip "¿Tienes dudas sobre tu perro?" — solo cuando está cerrado ── */}
       <AnimatePresence>
         {!open && hasUnread && (
           <motion.div
@@ -340,7 +323,6 @@ export default function VetBotWidget() {
         )}
       </AnimatePresence>
 
-      {/* ── FAB (botón flotante) ── */}
       <motion.button
         onClick={() => (open ? setOpen(false) : handleOpen())}
         whileHover={{ scale: 1.08 }}
@@ -374,7 +356,6 @@ export default function VetBotWidget() {
           )}
         </AnimatePresence>
 
-        {/* Notificación de bienvenida */}
         {!open && hasUnread && (
           <motion.span
             initial={{ scale: 0 }}

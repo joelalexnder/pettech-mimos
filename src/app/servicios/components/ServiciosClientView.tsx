@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { generarLinkWhatsApp } from "@/lib/whatsapp";
 import { ServiceItem } from "../constants";
 import Link from "next/link"; 
+import Image from "next/image"; 
 
 interface Props {
   services: ServiceItem[];
@@ -28,9 +29,11 @@ export default function ServiciosClientView({ services }: Props) {
                 idx % 2 === 1 ? "lg:order-2" : ""
               }`}
             >
-              <img
+              <Image
                 src={service.image}
                 alt={`${service.title} - Mimos Pet Club`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />

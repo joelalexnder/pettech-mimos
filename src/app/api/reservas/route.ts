@@ -4,7 +4,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/nose";
 
-// Número de WhatsApp de Mimos Pet Club (sin + ni espacios)
 const WHATSAPP_NUMBER =
   process.env.WHATSAPP_NUMBER || "51999999999";
 
@@ -22,7 +21,6 @@ export async function POST(req: NextRequest) {
       propietario?: string;
     } = body;
 
-    // Validar productos
     if (!productoIds || productoIds.length === 0) {
       return NextResponse.json(
         {
@@ -34,7 +32,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Buscar productos disponibles
     const productos = await prisma.producto.findMany({
       where: {
         id: {
@@ -47,7 +44,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Validar existencia
     if (productos.length === 0) {
       return NextResponse.json(
         {
@@ -59,7 +55,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Crear reserva
     const reserva = await prisma.reserva.create({
       data: {
         nombrePerro: nombrePerro || null,
@@ -82,7 +77,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Crear lista de productos
     const lineasProductos = productos
       .map(
         (p: any) =>
@@ -90,13 +84,11 @@ export async function POST(req: NextRequest) {
       )
       .join("\n");
 
-    // Calcular total
     const totalEstimado = productos.reduce(
       (sum: number, p: any) => sum + Number(p.precio),
       0
     );
 
-    // Mensaje WhatsApp
     const mensaje =
       `🐾 *Reserva Mimos Pet Club* 🐾\n\n` +
       `${nombrePerro ? `🐶 Paciente: *${nombrePerro}*\n` : ""}` +
@@ -106,12 +98,10 @@ export async function POST(req: NextRequest) {
       `📋 ID de reserva: *${reserva.id}*\n\n` +
       `Por favor confirmar disponibilidad y coordinar el recojo o delivery. ¡Gracias! 🐾`;
 
-    // URL WhatsApp
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
       mensaje
     )}`;
 
-    // Respuesta
     return NextResponse.json({
       reservaId: reserva.id,
 

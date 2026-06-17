@@ -15,12 +15,30 @@ export interface ServiceItem {
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
+    id: "veterinaria",
+    title: "Clínica Veterinaria",
+    tagline: "Salud integral y atención preventiva",
+    description: "La salud de tu mascota es nuestra máxima prioridad. Contamos con médicos veterinarios altamente capacitados para brindar atención médica general, esquemas de vacunación, prevención de enfermedades y atención de emergencias primarias.",
+    emoji: "🩺",
+    image: "/images/veterinaria-mimos-pet-club.webp",
+    badge: "bg-red-500/10 text-red-600 border-red-500/20",
+    accent: "text-red-500",
+    gradient: "from-red-500 to-rose-600",
+    waMessage: "¡Hola Mimos Pet Club! Necesito agendar una consulta veterinaria para mi mascota.",
+    benefits: [
+      "Consultas médicas preventivas y generales",
+      "Control estricto de vacunas y desparasitación",
+      "Diagnóstico oportuno y orientación nutricional",
+      "Atención primaria ante emergencias"
+    ]
+  },
+  {
     id: "hospedaje-hotel",
-    title: "Hotel & Hospedaje de Lujo",
+    title: "Hotel & Hospedaje",
     tagline: "Monitoreo 24/7 y suites climatizadas",
-    description: "Un segundo hogar diseñado para el confort absoluto de tu engreído. Contamos con habitaciones individuales, áreas de recreación seguras, supervisión veterinaria constante y reportes diarios con fotos y videos directos a tu WhatsApp.",
+    description: "Un segundo hogar diseñado para el confort absoluto de tu engreído. Contamos con habitaciones individuales, áreas de recreación seguras, supervisión constante y reportes diarios con fotos y videos directos a tu WhatsApp.",
     emoji: "🏨",
-    image: "https://content.nationalgeographic.com.es/medio/2023/03/16/perro-en-la-cama_3546ed19_230316131039_1280x853.jpg", 
+    image: "/images/hotel.webp", 
     badge: "bg-amber-500/10 text-amber-600 border-amber-500/20",
     accent: "text-amber-500",
     gradient: "from-amber-500 to-orange-600",
@@ -29,66 +47,83 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Suites individuales con control de temperatura",
       "Cámaras de seguridad y monitoreo las 24 horas",
       "Socialización guiada y horas de juego libre",
-      "Atención médica preventiva en caso de emergencias"
+      "Reportes multimedia diarios a los dueños"
+    ]
+  },
+  {
+    id: "guarderia-canina",
+    title: "Guardería Canina",
+    tagline: "Juego supervisado y socialización",
+    description: "La solución perfecta para que tu perro no se quede solo en casa. Durante el día, disfrutará de juegos estructurados, interacción segura con otros perros de su mismo nivel de energía y momentos de descanso en nuestras áreas adaptadas.",
+    emoji: "🐾",
+    image: "/images/guarderia-canina-mimos-pet-club.webp",
+    badge: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
+    accent: "text-emerald-500",
+    gradient: "from-emerald-500 to-green-600",
+    waMessage: "¡Hola! Quiero más información sobre la Guardería Canina para dejar a mi perro durante el día.",
+    benefits: [
+      "Ambientes seguros divididos por tamaño y energía",
+      "Juegos que estimulan su instinto natural",
+      "Reducción de estrés y ansiedad por separación",
+      "Supervisión constante por personal calificado"
     ]
   },
   {
     id: "colegio-canino",
     title: "Colegio Canino & Adiestramiento",
-    tagline: "Refuerzo positivo y socialización activa",
-    description: "Estimulación cognitiva, física y social para que tu perro aprenda jugando. Nuestro equipo de etólogos utiliza técnicas de reforzamiento positivo para mejorar su comportamiento, obediencia básica y canalizar su energía de forma saludable.",
+    tagline: "Refuerzo positivo y equilibrio",
+    description: "Estimulación cognitiva, física y social para que tu perro aprenda jugando. Nuestro equipo utiliza técnicas de reforzamiento positivo para mejorar su comportamiento, obediencia básica y canalizar su energía de forma completamente saludable.",
     emoji: "🎓",
-    image: "https://st3.depositphotos.com/1006075/36406/i/450/depositphotos_364067980-stock-photo-small-white-dog-sitting-school.jpg",
-    badge: "bg-sky-500/10 text-sky-600 border-sky-500/20",
-    accent: "text-sky-500",
-    gradient: "from-sky-500 to-blue-600",
-    waMessage: "¡Hola! Quisiera inscribir a mi perrito en el Colegio Canino de Mimos Pet Club. ¿Me dan info? ",
+    image: "/images/colegio.webp",
+    badge: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20",
+    accent: "text-indigo-500",
+    gradient: "from-indigo-500 to-violet-600",
+    waMessage: "¡Hola! Quisiera inscribir a mi perrito en el Colegio Canino de Mimos Pet Club. ¿Me dan info?",
     benefits: [
       "Rutinas personalizadas de estimulación mental",
       "Entrenamiento enfocado en bienestar y obediencia",
-      "Trasporte escolar seguro (Ida y Vuelta)",
+      "Modificación de conductas inadecuadas",
       "Reportes de avance y comportamiento semanal"
     ]
   },
   {
     id: "peluqueria-spa",
-    title: "Peluquería & Spa Premium",
+    title: "Peluquería & Spa",
     tagline: "Grooming profesional libre de estrés",
     description: "Mucho más que un baño estético. Nuestro servicio de spa canino está diseñado como una experiencia relajante que cuida la salud dermatológica de tu mascota usando productos e insumos premium, adaptados a cada tipo de pelaje.",
     emoji: "✂️",
-    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=600&auto=format&fit=crop",
-    badge: "bg-purple-500/10 text-purple-600 border-purple-500/20",
-    accent: "text-purple-500",
-    gradient: "from-purple-500 to-indigo-600",
+    image: "/images/grooming.webp",
+    badge: "bg-pink-500/10 text-pink-600 border-pink-500/20",
+    accent: "text-pink-500",
+    gradient: "from-pink-500 to-rose-500",
     waMessage: "¡Hola! Deseo agendar una cita en el Spa y Peluquería Canina para dejar a mi engreído impecable.",
     benefits: [
       "Baños con agua temperada y masajes relajantes",
       "Cortes de raza y deslanado profesional",
       "Corte de uñas seguro y limpieza de oídos",
-      "Uso exclusivo de champús hipoalergénicos orgánicos"
+      "Uso exclusivo de champús hipoalergénicos"
     ]
   },
   {
     id: "accesorios-premium",
-    title: "Accesorios & Boutique",
-    tagline: "Moda, juguetes interactivos y estilo único",
-    description: "Explora nuestro catálogo exclusivo de productos diseñados para mejorar el día a día de tu compañero. Desde arneses ergonómicos de alta resistencia hasta juguetes de estimulación cognitiva y snacks interactivos saludables.",
+    title: "Pet Shop & Boutique",
+    tagline: "Todo lo que necesita en un solo lugar",
+    description: "Explora nuestro catálogo exclusivo de productos diseñados para mejorar el día a día de tu compañero. Desde arneses ergonómicos de alta resistencia hasta juguetes de estimulación cognitiva, ropa de temporada y snacks saludables.",
     emoji: "🛍️",
-    image: "https://m.media-amazon.com/images/I/81mYgpgslRL.jpg", 
-    badge: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
-    accent: "text-emerald-500",
-    gradient: "from-emerald-500 to-teal-600",
+    image: "/images/tienda-de-mascotas.webp", 
+    badge: "bg-yellow-500/10 text-yellow-600 border-yellow-500/20",
+    accent: "text-yellow-500",
+    gradient: "from-yellow-500 to-orange-500",
     href: "/tienda", 
     waMessage: "", 
     benefits: [
       "Juguetes de estimulación mental e interactivos",
       "Collares y arneses ergonómicos garantizados",
-      "Platos anti-ansiedad y accesorios de paseo",
+      "Variedad en alimentos premium y super premium",
       "Snacks e insumos de alta calidad nutricional"
     ]
   }
 ];
-
 export const PAW_POSITIONS = [
   { left: "10%", top: "15%", size: "24px" },
   { left: "85%", top: "20%", size: "32px" },

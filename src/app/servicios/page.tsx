@@ -10,18 +10,19 @@ import { ScrollBar } from "@/components/inicio/shared";
 export const metadata: Metadata = {
   title: "Servicios | Mimos Pet Club",
   description:
-    "Descubre nuestros servicios exclusivos en Tacna: Hospedaje, Colegio Canino con refuerzo positivo y Peluquería & Spa Canino.",
+    "Descubre nuestros servicios en Tacna: Hospedaje, Colegio Canino con refuerzo positivo y Peluquería & Spa Canino.",
   keywords: [
+    "Veterinaria",
     "Hospedaje canino",
     "Hotel de mascotas Tacna",
     "Colegio canino",
-    "Peluqueria canina premium",
+    "Peluqueria canina",
     "Spa de mascotas",
     "Mimos Pet Club servicios",
   ],
   openGraph: {
-    title: "Servicios Premium para Mascotas | Mimos Pet Club",
-    description: "Cuidado experto, hospedaje de lujo y spa para tu mejor amigo.",
+    title: "Servicios para Mascotas | Mimos Pet Club",
+    description: "Cuidado experto, hospedaje y spa para tu mejor amigo.",
     images: [{ url: "/images/hero-servicios.webp", width: 1200, height: 630, alt: "Servicios Mimos Pet Club" }],
   },
 };
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 export default function ServiciosPage() {
   return (
 
-    <main className="overflow-hidden bg-[#fdfbf7]">
+    <main className="overflow-x-hidden bg-[#fdfbf7]">
       <ScrollBar />
 
       <BannerCarruselFondo />

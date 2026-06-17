@@ -48,7 +48,6 @@ export default function ConoceATuPerroPage() {
 
             <div aria-hidden className="absolute top-0 right-0 w-[55%] h-[70%] bg-linear-to-bl from-teal-50 to-transparent rounded-bl-[120px] pointer-events-none" />
             <div aria-hidden className="absolute bottom-0 left-0 w-80 h-80 bg-orange-100/60 rounded-full blur-3xl pointer-events-none -translate-x-1/3 translate-y-1/3" />
-            {/* Puntos flotantes — CSS puro, sin JS */}
             <div aria-hidden className="absolute top-40 right-16 w-3 h-3 bg-teal-300 rounded-full opacity-60 pointer-events-none" />
             <div aria-hidden className="absolute top-64 right-32 w-2 h-2 bg-orange-300 rounded-full opacity-60 pointer-events-none" />
             <div aria-hidden className="absolute bottom-48 left-16 w-4 h-4 bg-teal-200 rounded-full opacity-50 pointer-events-none" />

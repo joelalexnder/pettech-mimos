@@ -14,7 +14,7 @@ const SERVICES = [
 const COMPANY = [
   { label: "Sobre nosotros", href: "/conocenos" },
   { label: "Conoce a tu mascota", href: "/conoce-a-tu-perro" },
-  { label: "Tienda & IA", href: "/tienda" },
+  { label: "Tienda", href: "/tienda" },
 ];
 
 const SOCIALS = [
