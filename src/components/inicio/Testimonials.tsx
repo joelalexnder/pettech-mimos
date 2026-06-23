@@ -2,7 +2,7 @@
 
 import { FadeUp, Reveal } from "./shared";
 
-//testimonios de usaurios
+//testimonios users
 
 const testimonios = [
   {
