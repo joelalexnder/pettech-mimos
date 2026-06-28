@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { cookies } from "next/headers";
