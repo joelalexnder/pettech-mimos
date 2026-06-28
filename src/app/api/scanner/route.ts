@@ -1,12 +1,8 @@
-// -> BACKEND IA: Recibe la foto, procesa la IA y devuelve la raza.
-
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { cookies } from "next/headers";
-import sharp from "sharp";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
-
 
 export async function POST(request: Request) {
     try {
@@ -28,25 +24,18 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "No se proporcionó ninguna imagen." }, { status: 400 });
         }
         
-
+        
         const arrayBuffer = await imageFile.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
-        
-        const compressedBuffer = await sharp(buffer)
-        .resize({ width: 800, withoutEnlargement: true }) 
-        .jpeg({ quality: 80 }) 
-        .toBuffer();
-
-        const base64Data = compressedBuffer.toString("base64");
+        const base64Data = buffer.toString("base64");
         
         const imagePart = {
         inlineData: {
             data: base64Data,
-            mimeType: "image/jpeg",
+            mimeType: imageFile.type || "image/jpeg",
         },
         };
 
-        
         const prompt = `
         Actúa como un experto veterinario y analista de comportamiento canino de "Mimos Pet Club".
         Analiza la imagen adjunta con cuidado.
@@ -73,7 +62,6 @@ export async function POST(request: Request) {
         }
         `;
 
-        
         const model = genAI.getGenerativeModel({ 
         model: "gemini-flash-lite-latest",
         generationConfig: {

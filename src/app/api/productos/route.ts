@@ -1,5 +1,3 @@
-// src/app/api/productos/route.ts
-
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/nose";
 
@@ -11,15 +9,10 @@ type CategoriaProducto =
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-
-    // múltiples categorías
     const categorias = searchParams.getAll("categoria");
-
-    // disponibilidad
     const soloDisponibles =
       searchParams.get("disponible") !== "false";
 
-    // límite
     const limit = parseInt(
       searchParams.get("limit") || "20"
     );

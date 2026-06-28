@@ -1,11 +1,8 @@
-// src/app/api/reservas/route.ts
-// POST /api/reservas → guarda la reserva y devuelve el link de WhatsApp
-
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/nose";
 
 const WHATSAPP_NUMBER =
-  process.env.WHATSAPP_NUMBER || "51999999999";
+  process.env.WHATSAPP_NUMBER || "51952189680";
 
 export async function POST(req: NextRequest) {
   try {

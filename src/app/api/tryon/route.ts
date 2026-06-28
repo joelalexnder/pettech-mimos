@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import sharp from "sharp";
 
 const API_KEY = process.env.GENLOOK_API_KEY;
 
@@ -37,24 +36,8 @@ export async function POST(req: Request) {
       );
     }
 
-    const arrayBuffer = await file.arrayBuffer();
-    const inputBuffer = Buffer.from(arrayBuffer);
-
-
-    const processedBuffer = await sharp(inputBuffer)
-      .resize(900, 1200, {
-        fit: "cover",         
-        position: "attention",  
-        withoutEnlargement: false,
-      })
-      .jpeg({ quality: 90 })
-      .toBuffer();
-
-    const processedBlob = new Blob([new Uint8Array(processedBuffer)], { type: "image/jpeg" });
-
-
     const uploadForm = new FormData();
-    uploadForm.append("file", processedBlob, "pet_delivery.jpg");
+    uploadForm.append("file", file, "pet_delivery.jpg");
     uploadForm.append("crop", "false");
 
     const uploadRes = await fetch("https://api.genlook.app/tryon/v1/images/upload", {
@@ -122,7 +105,7 @@ export async function POST(req: Request) {
 
       if (resultData.status === "COMPLETED") {
         cookieStore.set("tryon_usos", (usosActuales + 1).toString(), {
-          maxAge: 60 * 60 * 24, // 1 día completo
+          maxAge: 60 * 60 * 24, 
           httpOnly: true,
           secure: process.env.NODE_ENV === "production"
         });

@@ -1,4 +1,5 @@
 // app/api/productos/recomendados/route.ts
+
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/nose";
 import type { Producto } from "@prisma/client";
