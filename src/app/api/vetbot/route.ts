@@ -1,4 +1,4 @@
-// src/app/api/vetbot/route.ts
+export const runtime = 'edge';
 
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
@@ -69,8 +69,8 @@ ${catalogoTexto}
 FORMATO DE RESPUESTA FINAL:
 - Breve análisis de los síntomas
 - Recomendaciones de cuidado en casa
-- ⚠️ Señales de alerta (cuándo ir al veterinario)
-- 🛍️ PRODUCTOS RECOMENDADOS DE NUESTRA TIENDA: [2-4 productos con nombre exacto y motivo]
+- Señales de alerta (cuándo ir al veterinario)
+- PRODUCTOS RECOMENDADOS DE NUESTRA TIENDA: [2-4 productos con nombre exacto y motivo]
 - Recordatorio de consulta presencial`;
 }
 

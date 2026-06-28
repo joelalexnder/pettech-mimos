@@ -1,4 +1,6 @@
 // app/api/productos/recomendados/route.ts
+export const runtime = 'edge';
+
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/nose";
 import type { Producto } from "@prisma/client";
