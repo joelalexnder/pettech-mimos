@@ -1,9 +1,7 @@
 export interface ServiceItem {
   id: string;
   title: string;
-  tagline: string;
   description: string;
-  emoji: string;
   image: string;
   badge: string;
   accent: string;
@@ -17,9 +15,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "veterinaria",
     title: "Clínica Veterinaria",
-    tagline: "Salud integral y atención preventiva",
     description: "La salud de tu mascota es nuestra máxima prioridad. Contamos con médicos veterinarios altamente capacitados para brindar atención médica general, esquemas de vacunación, prevención de enfermedades y atención de emergencias primarias.",
-    emoji: "🩺",
     image: "/images/veterinaria-mimos-pet-club.webp",
     badge: "bg-red-500/10 text-red-600 border-red-500/20",
     accent: "text-red-500",
@@ -35,9 +31,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "hospedaje-hotel",
     title: "Hotel & Hospedaje",
-    tagline: "Monitoreo 24/7 y suites climatizadas",
     description: "Un segundo hogar diseñado para el confort absoluto de tu engreído. Contamos con habitaciones individuales, áreas de recreación seguras, supervisión constante y reportes diarios con fotos y videos directos a tu WhatsApp.",
-    emoji: "🏨",
     image: "/images/hotel.webp", 
     badge: "bg-amber-500/10 text-amber-600 border-amber-500/20",
     accent: "text-amber-500",
@@ -53,9 +47,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "guarderia-canina",
     title: "Guardería Canina",
-    tagline: "Juego supervisado y socialización",
     description: "La solución perfecta para que tu perro no se quede solo en casa. Durante el día, disfrutará de juegos estructurados, interacción segura con otros perros de su mismo nivel de energía y momentos de descanso en nuestras áreas adaptadas.",
-    emoji: "🐾",
     image: "/images/guarderia-canina-mimos-pet-club.webp",
     badge: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
     accent: "text-emerald-500",
@@ -71,9 +63,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "colegio-canino",
     title: "Colegio Canino & Adiestramiento",
-    tagline: "Refuerzo positivo y equilibrio",
     description: "Estimulación cognitiva, física y social para que tu perro aprenda jugando. Nuestro equipo utiliza técnicas de reforzamiento positivo para mejorar su comportamiento, obediencia básica y canalizar su energía de forma completamente saludable.",
-    emoji: "🎓",
     image: "/images/colegio.webp",
     badge: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20",
     accent: "text-indigo-500",
@@ -89,9 +79,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "peluqueria-spa",
     title: "Peluquería & Spa",
-    tagline: "Grooming profesional libre de estrés",
     description: "Mucho más que un baño estético. Nuestro servicio de spa canino está diseñado como una experiencia relajante que cuida la salud dermatológica de tu mascota usando productos e insumos premium, adaptados a cada tipo de pelaje.",
-    emoji: "✂️",
     image: "/images/grooming.webp",
     badge: "bg-pink-500/10 text-pink-600 border-pink-500/20",
     accent: "text-pink-500",
@@ -107,9 +95,7 @@ export const SERVICES_DATA: ServiceItem[] = [
   {
     id: "accesorios-premium",
     title: "Pet Shop & Boutique",
-    tagline: "Todo lo que necesita en un solo lugar",
     description: "Explora nuestro catálogo exclusivo de productos diseñados para mejorar el día a día de tu compañero. Desde arneses ergonómicos de alta resistencia hasta juguetes de estimulación cognitiva, ropa de temporada y snacks saludables.",
-    emoji: "🛍️",
     image: "/images/tienda-de-mascotas.webp", 
     badge: "bg-yellow-500/10 text-yellow-600 border-yellow-500/20",
     accent: "text-yellow-500",

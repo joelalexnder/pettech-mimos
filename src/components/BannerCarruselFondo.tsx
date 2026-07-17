@@ -73,14 +73,12 @@ export default function BannerCarruselFondo() {
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full text-left">
-        <span className="inline-flex items-center gap-2 bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full mb-8 select-none">
-          🐶 Servicios Premium
-        </span>
 
-        <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-black text-white tracking-tighter leading-[0.95] max-w-4xl">
-          Todo lo que tu mascota necesita,
-          <span className="text-sky-400"> en un solo lugar.</span>
-        </h1>
+
+      <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-black tracking-tighter leading-[0.95] max-w-4xl">
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-300 via-orange-400 to-amber-500">Todo lo que tu mascota necesita,</span>
+        <span className="text-white"> en un solo lugar.</span>
+      </h1>
 
         <p className="text-white/70 text-lg leading-relaxed max-w-2xl mt-6">
           Hospedaje, entrenamiento y grooming de categoría internacional,
@@ -92,7 +90,7 @@ export default function BannerCarruselFondo() {
             <button
               key={s.id}
               onClick={() => handleScrollToSection(s.id)}
-              className="px-5 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold rounded-full backdrop-blur-sm transition-all duration-300 cursor-pointer"
+              className="px-5 py-2 bg-white/10 hover:bg-orange-500/20 border border-white/20 hover:border-orange-400/40 text-white text-sm font-semibold rounded-full backdrop-blur-sm transition-all duration-300 cursor-pointer"
             >
               {s.title}
             </button>

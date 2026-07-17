@@ -52,10 +52,10 @@ export default function ServiciosClientView({ services }: Props) {
               transition={{ duration: 0.6, delay: 0.1 }}
               className={`relative z-20 ${idx % 2 === 1 ? "lg:order-1" : ""}`}
             >
-              <span className={`inline-block text-xs font-black uppercase tracking-[0.2em] mb-3 ${service.accent}`}>
+              <span className="inline-block text-xs font-black uppercase tracking-[0.2em] mb-3 text-orange-500">
                 Mimos Pet Club
               </span>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter mb-6">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 text-transparent bg-clip-text bg-linear-to-r from-orange-600 to-orange-700">
                 {service.title}
               </h2>
               <p className="text-slate-500 text-base leading-relaxed mb-8">
@@ -65,7 +65,7 @@ export default function ServiciosClientView({ services }: Props) {
               <ul className="space-y-3.5 mb-10">
                 {service.benefits.map((benefit, bi) => (
                   <li key={bi} className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded-full bg-linear-to-br ${service.gradient} flex items-center justify-center shrink-0 mt-0.5`}>
+                    <div className="w-5 h-5 rounded-full bg-linear-to-br from-sky-500 to-sky-600 flex items-center justify-center shrink-0 mt-0.5">
                       <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
@@ -78,7 +78,7 @@ export default function ServiciosClientView({ services }: Props) {
               {service.href ? (
                 <Link
                   href={service.href}
-                  className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-linear-to-r ${service.gradient} text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center`}
+                  className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-linear-to-r from-sky-500 to-sky-600 text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center"
                 >
                   <span>🛍️</span> Explorar Tienda
                 </Link>
@@ -87,7 +87,7 @@ export default function ServiciosClientView({ services }: Props) {
                   href={generarLinkWhatsApp(service.waMessage)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2.5 px-8 py-3.5 bg-linear-to-r ${service.gradient} text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center`}
+                  className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-linear-to-r from-sky-500 to-sky-600 text-white font-bold text-sm rounded-xl shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5 cursor-pointer select-none text-center"
                 >
                   <span>💬</span> Reservar por WhatsApp
                 </a>
