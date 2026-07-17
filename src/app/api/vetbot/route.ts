@@ -1,5 +1,14 @@
-/*
+
 import { NextRequest, NextResponse } from "next/server";
+
+export async function POST() {
+    return NextResponse.json(
+        { error: "Modulo de IA desactivado temporalmente"},
+        { status: 503}
+    )
+}
+
+/*
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { prisma } from "@/lib/nose";
 

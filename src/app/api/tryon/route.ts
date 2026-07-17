@@ -1,5 +1,14 @@
-/*
+
 import { NextResponse } from "next/server";
+
+export async function POST() {
+    return NextResponse.json(
+        { error: "Modulo de IA desactivado temporalmente"},
+        { status: 503}
+    )
+}
+
+/*
 import { cookies } from "next/headers";
 
 const API_KEY = process.env.GENLOOK_API_KEY;
@@ -131,4 +140,4 @@ export async function POST(req: Request) {
     );
   }
 }
-  */
+*/
