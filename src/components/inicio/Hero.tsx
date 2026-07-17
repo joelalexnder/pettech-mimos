@@ -79,7 +79,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen min-h-125 overflow-hidden bg-[#0a0a0a] text-white flex flex-col justify-between">
+    <section ref={sectionRef} className="relative w-full h-screen min-h-125 overflow-hidden bg-[#071120] text-white flex flex-col justify-between">
       
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-0"
         style={{ backgroundImage: "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)", backgroundSize: "80px 80px" }}
@@ -101,14 +101,18 @@ export default function Hero() {
           </div>
 
           <h1 className="font-black leading-[0.85] tracking-[-0.04em] text-[clamp(3.5rem,9vw,8rem)]">
-            <span className="block overflow-hidden"><span ref={line1Ref} className="block">El cuidado</span></span>
             <span className="block overflow-hidden">
-              <span ref={line2Ref} className="block italic font-light" style={{ fontFamily: "ui-serif, Georgia, 'Times New Roman', serif" }}>
+              <span ref={line1Ref} className="block text-transparent bg-clip-text bg-linear-to-r from-orange-300 via-orange-400 to-amber-500">
+                El cuidado
+              </span>
+            </span>
+            <span className="block overflow-hidden">
+              <span ref={line2Ref} className="block italic font-light text-transparent bg-clip-text bg-linear-to-r from-orange-300 via-orange-400 to-amber-500" style={{ fontFamily: "ui-serif, Georgia, 'Times New Roman', serif" }}>
                 que se siente
               </span>
             </span>
             <span className="block overflow-hidden">
-              <span ref={line3Ref} className="block text-transparent bg-clip-text bg-linear-to-r from-orange-300 via-orange-400 to-amber-500">
+              <span ref={line3Ref} className="block text-white">
                 como hogar.
               </span>
             </span>

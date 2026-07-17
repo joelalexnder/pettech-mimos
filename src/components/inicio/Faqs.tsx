@@ -31,7 +31,8 @@ export default function Faqs() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section className="py-32 bg-slate-950">
+    <section className="relative py-32 bg-slate-950 ">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-orange-500 via-orange-400 to-transparent" />
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-20">
           <FadeUp>

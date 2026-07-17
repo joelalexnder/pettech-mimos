@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 export default function Location() {
     return (
     <section id="ubicacion" className="relative pt-24 pb-32 bg-white overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-l from-orange-500 via-orange-400 to-transparent" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             

@@ -24,12 +24,12 @@ export default function FinalCta() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6">
         <Reveal>
-          <h2 className="text-[clamp(3rem,10vw,7rem)] font-black text-slate-900 tracking-tighter leading-none">
+          <h2 className="text-[clamp(3rem,10vw,7rem)] font-black text-orange-500 tracking-tighter leading-none">
             ¿Listo para
           </h2>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="text-[clamp(3rem,10vw,7rem)] font-black text-orange-500 tracking-tighter leading-none">
+          <h2 className="text-[clamp(3rem,10vw,7rem)] font-black text-blue-950 tracking-tighter leading-none">
             consentirlos?
           </h2>
         </Reveal>

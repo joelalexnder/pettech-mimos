@@ -63,12 +63,13 @@ const services = [
 
 export default function ServicesGrid() {
   return (
+    
     <section className="py-28 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-orange-50 blur-3xl opacity-60" />
         <div className="absolute bottom-20 -right-32 w-96 h-96 rounded-full bg-sky-50 blur-3xl opacity-60" />
       </div>
-
+      <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-l from-orange-500 via-orange-400 to-transparent" />
       <div className="max-w-7xl mx-auto px-6 relative">
 
         {/* Header */}

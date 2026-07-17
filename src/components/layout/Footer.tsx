@@ -4,17 +4,21 @@ import Link from "next/link";
 import Image from "next/image";
 
 const SERVICES = [
-  { label: "Grooming profesional", href: "/servicios" },
-  { label: "Colegio canino",       href: "/servicios" },
+  { label: "Clínica Veterinaria",  href: "/servicios" },
   { label: "Hotel para mascotas",  href: "/servicios" },
-  { label: "Consulta IA",          href: "/consulta"  },
-  { label: "Probador Virtual",     href: "/probador-virtual" },
+  { label: "Guardería Canina",     href: "/servicios" },
+  { label: "Colegio canino",       href: "/servicios" },
+  { label: "Grooming profesional", href: "/servicios" },
+  //{ label: "Consulta IA",          href: "/consulta"  },
+  //{ label: "Probador Virtual",     href: "/probador-virtual" },
 ];
 
 const COMPANY = [
+
+  { label: "Servicios", href: "/servicios"},
   { label: "Sobre nosotros", href: "/conocenos" },
-  { label: "Conoce a tu mascota", href: "/conoce-a-tu-perro" },
   { label: "Tienda", href: "/tienda" },
+  //{ label: "Conoce a tu mascota", href: "/conoce-a-tu-perro" },
 ];
 
 const SOCIALS = [
@@ -66,9 +70,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-orange-400 hover:border-orange-400/40 hover:bg-orange-400/10 transition-all duration-200"
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-orange-400 hover:border-orange-400/40 hover:bg-orange-400/10 transition-all duration-200"
                 >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d={s.path} />
                   </svg>
                 </a>
@@ -77,8 +81,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Servicios</p>
-            <ul className="space-y-3">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-orange-500 mb-5">Servicios</p>
+            <ul className="space-y-6 text-sm">
               {SERVICES.map((s) => (
                 <li key={s.label}>
                   <Link
@@ -94,8 +98,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Empresa</p>
-            <ul className="space-y-3">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-orange-500 mb-5">Empresa</p>
+            <ul className="space-y-4 text-sm">
               {COMPANY.map((s) => (
                 <li key={s.label}>
                   <Link
@@ -111,7 +115,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-white/30 mb-5">Contacto</p>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-orange-500 mb-5">Contacto</p>
             <ul className="space-y-4 text-sm">
               <li>
                 <a

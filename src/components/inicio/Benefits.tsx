@@ -59,6 +59,8 @@ export default function Benefits() {
         <div className="absolute inset-0 bg-linear-to-b from-slate-950 via-transparent to-slate-950/50" />
       </div>
 
+      <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-orange-500 via-orange-400 to-transparent" />    
+        
       <div
         className="absolute inset-0 opacity-10"
         style={{

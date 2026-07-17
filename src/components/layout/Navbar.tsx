@@ -49,7 +49,7 @@ const SocialIcon = memo(({ social }: { social: Social }) => (
     aria-label={social.label}
     className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
   >
-    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path d={social.path} />
     </svg>
   </a>
