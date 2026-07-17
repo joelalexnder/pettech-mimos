@@ -12,8 +12,8 @@ const NAV_LINKS: NavLink[] = [
   { label: "Inicio", href: "/" },
   { label: "Servicios", href: "/servicios" },
   { label: "Tienda", href: "/tienda" },
-  { label: "Conoce a tu Mascota", href: "/conoce-a-tu-perro" },
-  { label: "Probador Virtual", href: "/probador-virtual" },
+  //{ label: "Conoce a tu Mascota", href: "/conoce-a-tu-perro" },
+  //{ label: "Probador Virtual", href: "/probador-virtual" },
   { label: "Nosotros", href: "/conocenos" },
 ];
 

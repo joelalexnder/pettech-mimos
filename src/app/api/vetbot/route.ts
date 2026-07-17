@@ -1,3 +1,4 @@
+/*
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { prisma } from "@/lib/nose";
@@ -11,7 +12,6 @@ interface VetFormData {
   descripcionExtra: string;
 }
 
-// ── Productos de la DB (con fallback al catálogo hardcodeado) ─────────────────
 
 async function obtenerProductosDB() {
   try {
@@ -127,3 +127,4 @@ Proporciona tu análisis completo siguiendo el formato de tus instrucciones.`.tr
     return NextResponse.json({ error: "Error interno del servidor." }, { status: 500 });
   }
 }
+  */

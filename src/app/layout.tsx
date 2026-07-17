@@ -3,7 +3,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import VetBotWidget from "@/components/features/VetBotWidget"; // 👈 NUEVO
+//import VetBotWidget from "@/components/features/VetBotWidget"; 
 
 const geist = Geist({ subsets: ["latin"] });
 
@@ -66,7 +66,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <VetBotWidget /> {/* 👈 NUEVO — va después del Footer */}
+        {/*<VetBotWidget />*/}
       </body>
     </html>
   );

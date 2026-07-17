@@ -1,3 +1,9 @@
+import { redirect } from 'next/navigation';
+
+export default function EscanerPage() {
+    redirect('/'); 
+}
+/*
 "use client";
 
 import dynamic from "next/dynamic";
@@ -138,3 +144,5 @@ export default function ConoceATuPerroPage() {
         </main>
     );
 }
+
+*/

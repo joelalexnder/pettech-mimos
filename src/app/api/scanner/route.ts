@@ -1,3 +1,6 @@
+
+
+/*
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { cookies } from "next/headers";
@@ -92,3 +95,5 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "Hubo un error al analizar la imagen. Inténtalo de nuevo." }, { status: 500 });
     }
 }
+
+*/
