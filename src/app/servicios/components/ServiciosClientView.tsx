@@ -39,8 +39,7 @@ export default function ServiciosClientView({ services }: Props) {
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-6 left-6">
                 <div className={`inline-flex items-center gap-2 ${service.badge} border border-white/20 shadow-md px-4 py-1.5 rounded-full text-xs font-bold`}>
-                  <span>{service.emoji}</span>
-                  {service.tagline}
+
                 </div>
               </div>
             </motion.div>
