@@ -182,9 +182,9 @@ Carga una foto de tu perro y obtén identificación automática de la raza con a
 
 ## Equipo
 
-- **Joel Alexander** (@joelalexnder) - Lead Frontend & Arquitectura
+- **Joel Alexander** (@joelalexnder) - Lead Frontend & Arquitectura & Integracion IA & Backend
 - **Diego Colca** (@diegocolca) - Backend & Servicios
-- **Albieri** (@albieri765) - Base de datos & Integración IA
+- **Albieri** (@albieri765) - Base de datos & Integracion IA
 
 ---
 
