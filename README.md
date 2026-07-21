@@ -147,7 +147,7 @@ Reserva citas para grooming, veterinaria y otros servicios.
 
 ## Equipo
 
-- Joel Alexander (@joelalexnder) - Lead Frontend & Arquitectura
+- Joel Alexander (@joelalexnder) - Lead Frontend & Arquitectura & Integracion IA
 - Diego Colca (@diegocolca) - Backend & Servicios
 - Albieri (@albieri765) - Base de datos & Integracion IA
 
