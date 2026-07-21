@@ -9,20 +9,20 @@
 
 ---
 
-## 🎯 ¿Qué es Mimos Pet Club?
+## ¿Qué es Mimos Pet Club?
 
 **Mimos Pet Club** es una aplicación web moderna desarrollada con Next.js que ofrece:
 
-- ✨ **Tienda en línea** - Catálogo de productos para mascotas
-- 🤖 **Asistente IA (VetBot)** - Chat inteligente para consultas veterinarias con Google Gemini
-- 🎨 **Probador Virtual** - Visualiza accesorios en tu mascota
-- 📱 **Escáner de Mascotas** - Detecta e identifica razas (Computer Vision)
-- 🛎️ **Servicios Integrados** - Reserva citas y servicios
-- 📍 **Ubicación y Contacto** - Botón flotante de WhatsApp para soporte directo
+- **Tienda en línea** - Catálogo de productos para mascotas
+- **Asistente IA (VetBot)** - Chat inteligente para consultas veterinarias con Google Gemini
+- **Probador Virtual** - Visualiza accesorios en tu mascota
+- **Escáner de Mascotas** - Detecta e identifica razas (Computer Vision)
+- **Servicios Integrados** - Reserva citas y servicios
+- **Ubicación y Contacto** - Botón flotante de WhatsApp para soporte directo
 
 ---
 
-## 🏗️ Stack Tecnológico
+## Stack Tecnológico
 
 | Aspecto | Tecnología |
 |--------|-----------|
@@ -37,7 +37,7 @@
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 src/
@@ -77,7 +77,7 @@ src/
 
 ---
 
-## 🚀 Cómo Ejecutar
+## Cómo Ejecutar
 
 ### Requisitos
 - Node.js 18+ y npm/pnpm/yarn
@@ -124,7 +124,7 @@ npm run lint
 
 ---
 
-## 🔧 Configuración de Variables de Entorno
+## Configuración de Variables de Entorno
 
 Crea un archivo `.env.local` en la raíz:
 
@@ -145,7 +145,7 @@ WHATSAPP_NUMBER=51987654321
 
 ---
 
-## 🎨 Funcionalidades Principales
+## Funcionalidades Principales
 
 ### 1️⃣ **Asistente VetBot**
 Chatbot IA impulsado por Google Gemini que responde preguntas sobre:
@@ -171,16 +171,16 @@ Carga una foto de tu perro y obtén identificación automática de la raza con a
 
 ---
 
-## 📊 Rendimiento
+## Rendimiento
 
-- ⚡ **Optimización de imágenes** con Next.js Image & Sharp
-- 📦 **Code splitting** con importaciones dinámicas
-- 🚀 **Edge Runtime** compatible (Cloudflare Workers)
-- 📱 **Responsive design** mobile-first
+- **Optimización de imágenes** con Next.js Image & Sharp
+- **Code splitting** con importaciones dinámicas
+- **Edge Runtime** compatible (Cloudflare Workers)
+- **Responsive design** mobile-first
 
 ---
 
-## 🤝 Equipo
+## Equipo
 
 - **Joel Alexander** (@joelalexnder) - Lead Frontend & Arquitectura
 - **Diego Colca** (@diegocolca) - Backend & Servicios
@@ -188,7 +188,7 @@ Carga una foto de tu perro y obtén identificación automática de la raza con a
 
 ---
 
-## 📝 Historial de Cambios
+## Historial de Cambios
 
 Consulta [CHANGELOG.md](./CHANGELOG.md) para ver los cambios por versión.
 
@@ -198,7 +198,7 @@ Consulta [CHANGELOG.md](./CHANGELOG.md) para ver los cambios por versión.
 
 ---
 
-## 🐛 Reporte de Bugs
+## Reporte de Bugs
 
 Abre un [GitHub Issue](https://github.com/joelalexnder/pettech-mimos/issues) describiendo:
 - Pasos para reproducir
@@ -208,7 +208,7 @@ Abre un [GitHub Issue](https://github.com/joelalexnder/pettech-mimos/issues) des
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 Repositorio privado. Derechos reservados © 2026 Mimos Pet Club.
 
