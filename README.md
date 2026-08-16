@@ -163,10 +163,7 @@ Las imagenes, logos y activos de marca de Mimos Pet Club estan sujetos a licenci
 
 ## Enlaces
 
-- Next.js Documentation: https://nextjs.org/docs
-- Prisma Documentation: https://www.prisma.io/docs
-- Google Generative AI: https://ai.google.dev/
-- Tailwind CSS: https://tailwindcss.com
+- https://pettech-mimos.netlify.app/
 
 ---
 
